@@ -15,4 +15,4 @@ function PageLayout({children, pageTitle}) {
     )
 }
 
-export default PageLayout
+export default PageLayout;

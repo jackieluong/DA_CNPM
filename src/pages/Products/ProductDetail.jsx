@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import productImage from "../../assets/img/giayAdidas.avif";
-import ImageSlider from "../../components/ImageSlider.jsx";
+
+// import ImageSlider from "../../components/ImageSlider.jsx";
 import { Rating } from "@mui/material";
 import ReviewList from "../../components/ReviewList.jsx";
 import PageLayout from "../../Layouts/PageLayout.jsx";
@@ -50,7 +50,7 @@ function ProductDetail({ productData }) {
           <div className="row">
             <div className="col-xl-4 col-md-8 mx-auto">
               {/* <img src={productImage} alt="Product" className="img-fluid"></img> */}
-              <ImageSlider />
+              {/* <ImageSlider /> */}
             </div>
 
             <div className="col-xl-8">

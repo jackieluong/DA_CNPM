@@ -72,7 +72,7 @@ function PromotionTableList({ promotionData, setPromotionData }) {
           className="btn btn-sm btn-primary me-3"
           onClick={() => handleClickAdd()}
         >
-          Add Promotion
+         + Add Promotion
         </button>
       </div>
       <Grid
@@ -83,7 +83,7 @@ function PromotionTableList({ promotionData, setPromotionData }) {
           formatDate(promotion.start_date),
           formatDate(promotion.end_date),
           _(
-            <div className="btn-actions">
+            <div className="d-flex gap-2">
               {/* <Tooltip title="View" placement="top">
                 <button
                   className="btn btn-light btn-sm"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 function DeleteModal({
   showModal,
@@ -17,7 +18,7 @@ function DeleteModal({
 
   return (
     <>
-      <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
+      {/* <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -52,7 +53,23 @@ function DeleteModal({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Modal show={showModal} onHide={handleToggleModal} >
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>{body}</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleToggleModal}>
+          {close}
+        </Button>
+        <Button variant="primary" onClick={handleClickConfirm}>
+          {confirm}
+        </Button>
+      </Modal.Footer>
+    </Modal>
     </>
   );
 }

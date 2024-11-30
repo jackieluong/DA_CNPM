@@ -21,7 +21,7 @@ body {
     font-size: 14px;
   }
   #root {
-    height: 100vh;
+    height: 100%;
   }
   .app {
     height: 100vh;
@@ -32,7 +32,7 @@ body {
     display: grid;
     /* grid-template-columns: 1fr 7fr; 
     /* background-color: #f3f3f9; */
-    height: 100%; /* Ensure this is set */
+    height: 100vh; /* Ensure this is set */
     display: flex;
   }
   .content {
@@ -41,6 +41,31 @@ body {
     background-color: #f3f3f9;
     flex: 1;
   }
+  /* .sidebar {
+    padding-top: 16px;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    background-color: #262d34;
+    flex-direction: column;
+    transition: width 0.5s ease; 
+    overflow-y: auto;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    height: 50px;
+    padding: 10px 25px;
+    text-decoration: none;
+    opacity: 0.6;
+    align-items: center;
+    font-size: 16px;
+    list-style: none;
+    color: #fff;
+    gap: 12px;
+    cursor: pointer;
+  } */
+
   .sidebar {
     padding-top: 16px;
     width: 250px;
@@ -48,7 +73,7 @@ body {
     display: flex;
     background-color: #262d34;
     flex-direction: column;
-    transition: width 0.5s ease; /* Transition effect */
+    transition: width 0.5s ease; 
     overflow-y: auto;
   }
   
@@ -65,6 +90,12 @@ body {
     gap: 12px;
     cursor: pointer;
   }
+
+.collapsed {
+    width: 80px;
+  }
+
+
   .arrow-icon {
     margin-left: auto;
   }
@@ -179,13 +210,14 @@ body {
   }
   .product-table .btn-primary {
   }
-  .show {
-    display: block;
-  }
+
+
   .modal.show {
     background-color: rgb(0, 0, 0, 0.5);
-    
-    
+   
+  }
+  .show {
+    display: block;
   }
   .modal-dialog {
     

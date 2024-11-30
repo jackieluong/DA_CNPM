@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SelectInput from "../FormInput/SelectInput";
 import { paymentOptions, statusOptions } from "../../utils/selectOptions";
-import { Toast, ToastContainer } from "react-bootstrap";
+import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 
 
 function EditModal({
@@ -20,6 +20,7 @@ function EditModal({
 
   const [showToast, setShowToast] = useState(false); // Manage toast state locally
 
+  
   useEffect(() =>{
     if(selectedOrder) {
       setOrderStatus(selectedOrder.status);
@@ -62,7 +63,7 @@ function EditModal({
           <Toast.Body  className="text-white">Order updated successfully!</Toast.Body>
         </Toast>
       </ToastContainer>
-      <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
+      {/* <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -76,8 +77,7 @@ function EditModal({
               ></button>
             </div>
             <div className="modal-body">
-              {/* <p>{body}</p> */}
-              {/* <SelectInput label="Status" options={} name="status" value={body.status} handleChange={handleToggleModal} required /> */}
+             
               
               <SelectInput label="Order Status" options={statusOptions} name="status" value={orderStatus} handleChange={handleChange}  />
               <SelectInput label="Payment Status" options={paymentOptions} name="payment_status" value={paymentStatus} handleChange={handleChange}  />
@@ -101,7 +101,39 @@ function EditModal({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Modal show={showModal} onHide={handleToggleModal} >
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {/* Order Status Dropdown */}
+        <SelectInput
+          label="Order Status"
+          options={statusOptions}
+          name="status"
+          value={orderStatus}
+          handleChange={handleChange}
+        />
+
+        {/* Payment Status Dropdown */}
+        <SelectInput
+          label="Payment Status"
+          options={paymentOptions}
+          name="payment_status"
+          value={paymentStatus}
+          handleChange={handleChange}
+        />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleToggleModal}>
+          {close}
+        </Button>
+        <Button variant="primary" onClick={handleClickConfirm}>
+          {confirm}
+        </Button>
+      </Modal.Footer>
+    </Modal>
     </>
   );
 }

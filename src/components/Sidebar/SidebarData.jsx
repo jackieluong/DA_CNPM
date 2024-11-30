@@ -6,7 +6,7 @@ import { FaClipboardList, FaRegEdit, FaShoppingCart } from "react-icons/fa";
 const SidebarData = [
     {
       title: 'Dashboard',
-      path: 'admin/dashboard',
+      path: '/admin/dashboard',
       icon: <MdDashboard />,
       iconClosed: <MdKeyboardArrowUp />,
       iconOpened: <MdKeyboardArrowDown/>,
@@ -15,7 +15,7 @@ const SidebarData = [
     },
     {
       title: 'Products',
-      path: 'admin/products',
+      path: '/admin/products',
       icon: <MdInventory /> ,
       iconClosed: <MdKeyboardArrowUp />,
       iconOpened: <MdKeyboardArrowDown />,
@@ -23,19 +23,19 @@ const SidebarData = [
       subNav: [
         {
           title: 'List',
-          path: 'admin/products/list',
+          path: 'products/list',
           icon: <FaClipboardList />,
           cName: 'sub-nav'
         },
         {
           title: 'Edit',
-          path: 'admin/products/edit/:id',
+          path: 'products/edit/:id',
           icon: <FaRegEdit />,
           cName: 'sub-nav'
         },
         {
           title: 'Create',
-          path: 'admin/products/create',
+          path: 'products/create',
           icon: <MdCreateNewFolder />
         }
       ]
@@ -44,7 +44,7 @@ const SidebarData = [
   
     {
       title: 'Orders',
-      path: 'admin/orders',
+      path: '/admin/orders',
       icon: <FaShoppingCart />,
   
       iconClosed: <MdKeyboardArrowUp />,
@@ -53,7 +53,7 @@ const SidebarData = [
       subNav: [
         {
           title: 'List',
-          path: 'admin/orders/list',
+          path: 'orders/list',
           icon: <FaShoppingCart/>
         },
         // {
@@ -65,7 +65,7 @@ const SidebarData = [
     },
     {
       title: 'Customers',
-      path: 'admin/customers',
+      path: '/admin/customers',
       icon: <MdPeople />,
   
       iconClosed: <MdKeyboardArrowUp />,
@@ -74,19 +74,19 @@ const SidebarData = [
       subNav: [
         {
           title: 'List',
-          path: 'admin/customers/list',
+          path: 'customers/list',
           icon: <FaShoppingCart/>
         },
         {
           title: 'Details',
-          path: 'admin/customers/detail',
+          path: 'customers/detail',
           icon: <FaShoppingCart />
         }
       ]
     },
     {
       title: 'Promotions',
-      path: 'admin/promotions',
+      path: '/admin/promotions',
       icon: <MdPeople />,
   
       iconClosed: <MdKeyboardArrowUp />,
@@ -95,12 +95,12 @@ const SidebarData = [
       subNav: [
         {
           title: 'List',
-          path: 'admin/promotions/list',
+          path: 'promotions/list',
           icon: <FaShoppingCart/>
         },
         {
           title: 'Details',
-          path: 'admin/promotions/detail',
+          path: 'promotions/detail',
           icon: <FaShoppingCart />
         }
       ]

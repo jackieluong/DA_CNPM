@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function SidebarItem({ item }) {
+function SidebarItem({ item, showSideBar }) {
   const [subnav, setSubnav] = useState(false);
 
 
@@ -9,7 +9,13 @@ function SidebarItem({ item }) {
     setSubnav((subnav) => !subnav);
   }
 
-  if (!item.subNav) {
+  if (!showSideBar) {
+    return <NavLink 
+    to={item.path} className={`sidebar-item`}>{item.icon} 
+    
+    </NavLink>
+  }  
+  else if (!item.subNav) {
     return (
       <NavLink to={item.path} className="sidebar-item">
         <span className="sidebar-icon">{item.icon} </span>

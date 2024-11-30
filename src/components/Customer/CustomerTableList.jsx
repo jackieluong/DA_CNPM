@@ -18,7 +18,7 @@ function CustomerTableList({ customerData, setCustomerData }) {
           
           
           _(
-            <div className="btn-actions">
+            <div className="d-flex gap-2">
               <Tooltip title="View" placement="top">
                 <button
                   className="btn btn-light btn-sm"

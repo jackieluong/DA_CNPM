@@ -1,6 +1,4 @@
 import { FaBars } from "react-icons/fa";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoMoonOutline } from "react-icons/io5";
 import TopBarItem from "./TopBarItem";

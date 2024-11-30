@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Toast, ToastContainer } from "react-bootstrap";
+import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import TextInput from "../FormInput/TextInput";
 import InputGroup from "../FormInput/InputGroup";
 
@@ -89,8 +89,8 @@ function PromotionModal({
           <Toast.Body className="text-white">{title} successfully!</Toast.Body>
         </Toast>
       </ToastContainer>
-      <form onSubmit={ handleClickConfirm}>
-      <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
+      <form onSubmit={handleClickConfirm}>
+        {/* <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -142,7 +142,7 @@ function PromotionModal({
                   </div>
                 </div>
 
-                {/* <TextInput type='number' name='promo_value' value={promotion.promo_value} label='Promo Value' placeholder='Promo Value' handleChange={handleChange} required/> */}
+                
                 <InputGroup
                   label="Value"
                   prependText="%"
@@ -170,7 +170,68 @@ function PromotionModal({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+        <Modal show={showModal} onHide={handleToggleModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <TextInput
+              type="text"
+              name="name_"
+              value={promotion.name_}
+              label="Code Name"
+              placeholder="Code Name"
+              handleChange={handleChange}
+              required
+            />
+
+            <div className="row">
+              <div className="col-sm-6">
+                <TextInput
+                  type="date"
+                  name="start_date"
+                  value={promotion.start_date}
+                  label="Start Date"
+                  placeholder="Start Date"
+                  handleChange={handleChange}
+                  required={true}
+                />
+              </div>
+              <div className="col-sm-6">
+                <TextInput
+                  type="date"
+                  name="end_date"
+                  value={promotion.end_date}
+                  label="End Date"
+                  placeholder="End Date"
+                  handleChange={handleChange}
+                  required={true}
+                />
+              </div>
+            </div>
+
+            <InputGroup
+              label="Value"
+              prependText="%"
+              type="number"
+              name="promo_value"
+              value={promotion.promo_value}
+              placeholder="Value"
+              handleChange={handleChange}
+              required={true}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleToggleModal}>
+              {close}
+            </Button>
+            <Button variant="primary" type="submit" onClick={handleClickConfirm}>
+              {confirm}
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </form>
     </>
   );

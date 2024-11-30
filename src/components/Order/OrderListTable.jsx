@@ -28,7 +28,7 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
   function handleClickView(id) {
     setSelectedOrderId(id);
 
-    navigate(`/orders/detail/${id}`);
+    navigate(`/admin/orders/detail/${id}`);
   }
 
   const selectedOrder = orderData.find(
@@ -36,8 +36,8 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
   );
   function handleClickEdit(id) {
     setSelectedOrderId(id);
-    // navigate(`/orders/edit/${id}`); // Redirect to edit page with product ID
-
+    console.log(id);
+    
     //
 
     handleToggleEditModal();
@@ -123,7 +123,7 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
             // ),
             _(getStatusBadge(order.status)),
             _(
-              <div className="btn-actions">
+              <div className="d-flex gap-2">
                 <Tooltip title="View" placement="top">
                   <button
                     className="btn btn-light btn-sm"

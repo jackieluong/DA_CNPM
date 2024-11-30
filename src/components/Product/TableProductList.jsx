@@ -23,8 +23,8 @@ function TableProductList({productData, setProductData} ) {
         {/* <RangeSlider /> */}
 
         <div className="d-flex justify-content-end p-3" style={{width:"100%"}}>
-        <Link to="/products/create" className="btn btn-sm btn-primary">
-          Add Product
+        <Link to="/admin/products/create" className="btn btn-sm btn-primary">
+          + Add Product
         </Link>
         </div>
       </div>

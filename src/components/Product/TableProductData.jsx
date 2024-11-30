@@ -70,11 +70,11 @@ function TableProductData({ searchTerm, productData, setProductData }) {
 
   function handleClickView(id) {
     setSelectedProductId(id);
-    navigate(`/products/detail/${id}`);
+    navigate(`/admin/products/detail/${id}`);
   }
   function handleClickEdit(id) {
     setSelectedProductId(id);
-    navigate(`/products/edit/${id}`); // Redirect to edit page with product ID
+    navigate(`/admin/products/edit/${id}`); // Redirect to edit page with product ID
   }
   function handleClickDelete(id) {
     setSelectedProductId(id);
@@ -119,7 +119,7 @@ function TableProductData({ searchTerm, productData, setProductData }) {
             `${Number(product.rating ? product.rating : 0)} ⭐`,
             product.category,
             _(
-              <div className="btn-actions">
+              <div className="d-flex gap-2">
                 <Tooltip title="View" placement="top">
                   <button
                     className="btn btn-light btn-sm"
