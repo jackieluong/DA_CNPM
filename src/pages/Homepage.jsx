@@ -1,7 +1,7 @@
 
 import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
-import ProductDetails from './Detail/ProductDetails';
+// import ProductDetails from './Detail/ProductDetails';
 
 function Homepage() {
     return (
@@ -9,7 +9,7 @@ function Homepage() {
             <div>
                 <NavBar/>
             </div>
-            <ProductDetails/>
+            {/* <ProductDetails/> */}
             <div>
                 <Footer/>
             </div>
