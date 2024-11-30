@@ -3,6 +3,10 @@ import PageNotFound from "./pages/PageNotFound";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login/Login";
 
+
+import '../src/styles/global.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 function App() {
   
   return (
