@@ -10,48 +10,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import { deleteProduct } from "../../services/ProductService";
 
-// const initialProductData = [
-//   {
-//     id: 1,
-//     name: "Wireless Mouse",
-//     stock: 45,
-//     price: 29.99,
-//     rating: 4.5,
-//     category: "Electronics",
-//   },
-//   {
-//     id: 2,
-//     name: "Bluetooth Headphones",
-//     stock: 23,
-//     price: 59.99,
-//     rating: 4.8,
-//     category: "Electronics",
-//   },
-//   {
-//     id: 3,
-//     name: "Coffee Maker",
-//     stock: 15,
-//     price: 89.99,
-//     rating: 4.3,
-//     category: "Home Appliances",
-//   },
-//   {
-//     id: 4,
-//     name: "Electric Kettle",
-//     stock: 32,
-//     price: 19.99,
-//     rating: 4.0,
-//     category: "Home Appliances",
-//   },
-//   {
-//     id: 5,
-//     name: "Smartphone Stand",
-//     stock: 60,
-//     price: 14.99,
-//     rating: 4.7,
-//     category: "Accessories",
-//   },
-// ];
 
 function TableProductData({ searchTerm, productData, setProductData }) {
   // const filteredData = productData.filter((product) =>
@@ -83,14 +41,7 @@ function TableProductData({ searchTerm, productData, setProductData }) {
 
   async function handleDeleteProduct() {
     const response = await deleteProduct(selectedProductId);
-
-    if (!response.ok) {
-      // const errorData = await response.json();
-      const errorData = await response.json(); // Ensure to extract JSON message
-      throw new Error(
-        `Failed to delete product: ${errorData.message || response.statusText}`
-      );
-    }
+  
 
     const updatedProducts = productData.filter(
       (product) => product.product_id !== selectedProductId
@@ -113,7 +64,7 @@ function TableProductData({ searchTerm, productData, setProductData }) {
         <Grid
           data={productData.map((product) => [
             product.product_id,
-            product.name_,
+            product.name,
             product.quantity,
             `$ ${Number(product.price).toFixed(2)}`,
             `${Number(product.rating ? product.rating : 0)} ⭐`,

@@ -35,20 +35,21 @@ function AdminPage() {
   async function fetchProducts() {
     try {
       const data = await fetchProductData();
+      
+    
       const standardizedData = data.map((item) => ({
         product_id: item.product_id,
-        name_: item.name_,
+        name: item.name,
         brand: item.brand,
         quantity: item.quantity,
         price: item.price,
-        rating: item.rating,
+        // rating: item.rating,
         category: item.category,
-        size_: item.size,
-        weight_: item.weight_,
-        color: item.color,
-        description_: item.description_,
+        imgUrl: item.imgUrl,
+        description: item.description,
       }));
       setProductData(standardizedData);
+      
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -76,75 +77,12 @@ function AdminPage() {
 
   useEffect(() => {
     fetchProducts();
-    fetchOrders();
+    // fetchOrders();
   }, []);
 
+  console.log(productData);
   return (
-    // <AdminLayout showSideBar={showSideBar} setShowSideBar={setShowSideBar}>
-    //   <Routes>
-    //     <Route path="admin/dashboard" element={<Dashboard />} />
-    //     <Route path="admin/products">
-    //       <Route
-    //         path="list"
-    //         element={
-    //           <ProductList
-    //             productData={productData}
-    //             setProductData={setProductData}
-    //           />
-    //         }
-    //       />
-    //       <Route
-    //         path="edit/:id"
-    //         element={
-    //           <EditProduct
-    //             productData={productData}
-    //             setProductData={setProductData}
-    //           />
-    //         }
-    //       />
-    //       <Route
-    //         path="create"
-    //         element={
-    //           <CreateProduct
-    //             productData={productData}
-    //             setProductData={setProductData}
-    //           />
-    //         }
-    //       />
-    //       <Route
-    //         path="detail/:id"
-    //         element={<ProductDetail productData={productData} />}
-    //       />
-    //     </Route>
-    //     <Route path="admin/orders">
-    //       <Route
-    //         path="list"
-    //         element={
-    //           <OrderList orderData={orderData} setOrderData={setOrderData} />
-    //         }
-    //       />
-    //       <Route
-    //         path="detail/:id"
-    //         element={<OrderDetail orderData={orderData} />}
-    //       />
-    //     </Route>
-    //     <Route path="admin/customers">
-    //       <Route
-    //         path="list"
-    //         element={<CustomerList customerData={customerData} />}
-    //       />
-    //       <Route path="detail/:id" />
-    //     </Route>
-    //     <Route path="admin/promotions">
-    //       <Route
-    //         path="list"
-    //         element={<PromotionList promotionData={promotionData} />}
-    //       />
-    //       <Route path="detail/:id" />
-    //     </Route>
-    //     <Route path="*" element={<PageNotFound />} />
-    //   </Routes>
-    // </AdminLayout>
+
     <AdminLayout >
     <Routes>
       <Route path="dashboard" index element={<Dashboard />} />

@@ -5,11 +5,13 @@ import PageLayout from "../../Layouts/PageLayout";
 function EditProduct({ productData, setProductData }) {
   const { id } = useParams();
   const selectedProductId = id;
-  console.log(id);
+  
+  
   const selectedProduct = productData.find(
-    (product) => product.product_id === selectedProductId
+    (product) => product.product_id === Number(id)
   );
 
+  console.log(selectedProduct);
   return (
     // <div className="page-content">
     //   <div className="container-fluid">

@@ -24,15 +24,13 @@ import { colors, categories } from "../../utils/selectOptions";
 
 
 const initialProductState = {
-  name_: "",
+  name: "",
   brand: "",
   category: "",
   quantity: "",
-  size_: "",
-  weight_: "",
-  color: "",
-  description_: "",
+  description: "",
   price: "",
+  imgUrl: "",
 };
 
 
@@ -49,6 +47,7 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
 
   function handleChange(e) {
     const { name, value } = e.target;
+    
     setProduct((prevProduct) => ({
       ...prevProduct,
       [name]: value,
@@ -58,44 +57,24 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
     navigate(path);
     window.scrollTo(0, 0);
   }
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   // Update the product if selectedProduct exists, otherwise add new product
-  //   if (selectedProduct) {
-  //     const updatedProducts = productData.map((item) =>
-  //       item.id === selectedProduct.id
-  //         ? { ...product, id: selectedProduct.id }
-  //         : item
-  //     );
-  //     setProductData(updatedProducts);
-  //     alert("Product updated successfully");
-  //   } else {
-  //     setProductData([...productData, { ...product, id: Date.now() }]);
-  //     alert("Product added successfully");
-  //   }
-
-  //   setProduct(initialProductState);
-  //   console.log(product);
-  //   handleNavigate("/products/list");
-  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(product);
 
     try {
       if (selectedProduct) {
       
         const response = await updateProduct(selectedProduct.product_id, product);
         
-        if(!response.ok){
-          const errorData = await response.json() // Ensure to extract JSON message
-          throw new Error(
-            `Failed to update product: ${errorData.message || response.statusText}`
-          );
-        }
+        // if(!response.ok){
+        //   const errorData = await response.json() // Ensure to extract JSON message
+        //   throw new Error(
+        //     `Failed to update product: ${errorData.message || response.statusText}`
+        //   );
+        // }
         
-        // console.log(product);
+        
         const updatedProducts = productData.map((item) =>
           item.product_id === selectedProduct.product_id ? product : item
         );
@@ -103,12 +82,12 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
         alert("Product updated successfully");
       } else {
    
-
+        console.log(product);
         // Add new product to database
 
           const response = await addProduct(product);        
-          console.log( response,response.id);
-          const newProduct = { ...product, product_id: response.id }; 
+          
+          const newProduct = { ...product, product_id: response.newProductID }; 
           console.log(newProduct);
           // Add the new product to the start of productData
           setProductData((productData)=> [newProduct, ...productData]);
@@ -118,7 +97,7 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
       }
 
       setProduct(initialProductState);
-      handleNavigate("/products/list");
+      handleNavigate("/admin/products/list");
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred: " + error.message);
@@ -136,8 +115,8 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
             <div className="card-body">
               <TextInput
                 type="text"
-                name="name_"
-                value={product.name_}
+                name="name"
+                value={product.name}
                 label="Product Name"
                 placeholder="Enter product name"
                 handleChange={handleChange}
@@ -177,7 +156,7 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
                   />
                 </div>
               </div>
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-lg-6">
                   
                   <TextInput
@@ -202,8 +181,8 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
                     required={true}
                   />
                 </div>
-              </div>
-              <SelectInput
+              </div> */}
+              {/* <SelectInput
                 label="Color"
                 options={colors}
                 name="color"
@@ -211,14 +190,14 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
                 // onChange={handleCategoryChange}
                 handleChange={handleChange}
                 required={true}
-              />
+              /> */}
               <div className="mb-3">
                 <label className="form-label">Product Description</label>
                 <textarea
                   className="form-control"
                   rows="5"
-                  name="description_"
-                  value={product.description_}
+                  name="description"
+                  value={product.description}
                   onChange={handleChange}
                   required={false}
                 ></textarea>
@@ -229,7 +208,16 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
           <div className="card mt-4">
             <div className="card-header">Product Gallery</div>
             <div className="card-body">
-              <ImgUpload />
+              <ImgUpload imgUrl={product.imgUrl} handleChange={handleChange} />
+              {/* <TextInput
+                    type="text"
+                    label="Image URL"
+                    value={product.img_url}
+                    name="img_url"
+                    handleChange={handleChange}
+                    placeholder="Enter product image URL"
+                    required={true}
+                /> */}
             </div>
           </div>
         </div>

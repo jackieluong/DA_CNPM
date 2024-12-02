@@ -15,9 +15,10 @@ export const paymentOptions = [
 ];
 
 export const categories = [
-  { value: "Shoes", label: "Shoes" },
-  { value: "Stocks", label: "Stocks" },
-  { value: "Sneaker", label: "Sneaker" },
+  { value: "Phone", label: "Phone" },
+  { value: "Tablet", label: "Tablet" },
+  { value: "Laptop", label: "Laptop" },
+  {value: "Accessories", label: "Accessories"},
 ];
 
 export const colors = [
