@@ -1,56 +1,50 @@
-
-.container {
-  display: flex;
-  justify-content: center; /* Căn giữa toàn bộ nội dung */
-  align-items: center; /* Căn giữa theo chiều dọc */
-  height: 80vh; /* Chiều cao 100% màn hình */
-  padding: 20px 20px;
+.productContainer {
+  width: 80%;
+  margin: 20px auto;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  color: #333;
 }
 
-.body {
+.productInfo {
   display: flex;
-  max-width: 1200px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 20px;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .productImage {
-  width: 50%; /* Chiếm 50% chiều rộng */
-  object-fit: cover; /* Đảm bảo ảnh hiển thị đúng tỉ lệ */
+  width: 40%; 
+  object-fit: cover; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
-.productDetails {
-  width: 50%; /* Chiếm 50% chiều rộng */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Căn nội dung giữa theo chiều dọc */
+.details {
+  flex: 1;
 }
 
-.title {
+.productName {
   font-size: 24px;
-  color: #333;
   margin-bottom: 10px;
 }
 
-.brand, .type, .description, .price, .contact {
-  font-size: 16px;
+.productBrand {
+  font-size: 18px;
+  color: #353535;
   margin-bottom: 10px;
-  color: #555;
+}
+.productType {
+  font-size: 18px;
+  color: #353535;
+  margin-bottom: 10px;
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
+.productPrice {
+  font-size: 20px;
+  color: #e74c3c;
+  margin-bottom: 15px;
 }
 
-.cartButton {
+.addToCartButton {
   padding: 10px 20px;
   background-color: #292929;
   color: #fff;
@@ -60,8 +54,47 @@
   margin-right: 20px;
 }
 
-.cartButton:hover {
+.addToCartButton:hover {
   background-color: #464646;
 }
 
+.tabContainer {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+}
 
+.tabButton {
+  flex: 1;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.tabButton:hover {
+  background-color: #f1f1f1;
+}
+
+.activeTab {
+  border-bottom: 3px solid #555;
+  font-weight: bold;
+  background-color: white;
+}
+
+.tabContent {
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.tab h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}

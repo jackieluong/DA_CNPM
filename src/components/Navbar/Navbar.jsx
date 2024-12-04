@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-
 import { FaSearch,FaShoppingCart, FaHeart, FaUser} from "react-icons/fa";
 
 const NavBar = () => {
@@ -31,8 +30,6 @@ const NavBar = () => {
                     SẢN PHẨM
                 </NavLink>
             </li>
-            
-         
         </ul>
         <div className={styles.rightSection}>
             <input type="text" placeholder="tìm kiếm..." className={styles.searchBar}/>

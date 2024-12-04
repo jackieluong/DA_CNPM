@@ -2,14 +2,13 @@
 import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 
-
 function Homepage() {
     return (
         <div>
             <div>
                 <NavBar/>
             </div>
-            Homepgae
+            Homepage 
             <div>
                 <Footer/>
             </div>
