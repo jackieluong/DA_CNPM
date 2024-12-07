@@ -40,7 +40,7 @@
 
 .productPrice {
   font-size: 20px;
-  color: #e74c3c;
+  color: #353535;
   margin-bottom: 15px;
 }
 
@@ -69,10 +69,9 @@
   padding: 10px 20px;
   text-align: center;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: white;
   border: none;
   font-size: 16px;
-  transition: all 0.3s ease;
 }
 
 .tabButton:hover {
@@ -82,7 +81,7 @@
 .activeTab {
   border-bottom: 3px solid #555;
   font-weight: bold;
-  background-color: white;
+  background-color: #f9f9f9;
 }
 
 .tabContent {

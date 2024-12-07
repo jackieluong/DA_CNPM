@@ -76,7 +76,53 @@
 }
 .icons span {
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
+.navItem {
+    position: relative;
+    cursor: pointer;
+    
+}
+  
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+}
+
+.dropdownItem {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.logoutButton {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #292929;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background-color:#464646;
+}
