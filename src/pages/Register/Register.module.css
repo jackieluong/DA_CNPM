@@ -1,0 +1,160 @@
+
+.loginPage {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.leftSection {
+    display: flex;
+    min-height: 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -40px;
+}
+
+@media (min-width: 1024px) {
+    .leftSection{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 640px) { 
+    .topPage{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%; 
+        max-width: 24rem;
+    }
+}
+
+
+
+.topPage h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #111827;
+}
+
+.container {
+    margin-top: 10px; 
+}
+
+@media (min-width: 640px) { 
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%; 
+        max-width: 24rem; 
+    }  
+}
+
+.forgotPassword {
+  margin: 15px;
+  font-size: 14px; 
+  line-height: 20px; 
+  text-align: right;
+}
+
+.forgotPassword a {
+    font-weight: 600;
+    color: #292929;
+    text-decoration: none;
+}
+
+.forgotPassword a:hover {
+    color: #464646;
+}
+
+.betweenContainer {
+    margin: 0;
+}
+
+.itemOr {
+    display: flex;
+    align-items: center;
+}
+
+.itemOr hr {
+    display: flex;
+    flex: 1;
+    border-top: 1px solid rgb(209 213 219);
+}
+
+.itemOr p {
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: rgb(107 114 128);
+}
+
+.registerGoogle {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 0;
+  border: 2px solid #a1a1a1;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.registerGoogle:hover {
+    background-color: #e5e7eb;
+    color: rgb(75 85 99);
+}
+
+.registerGoogle img{
+  width: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.registerGoogle p {
+    font-weight: 600;
+    color: rgb(55 65 81);
+}
+
+.registerGoogle p:hover {
+    color: rgb(75 85 99);
+}
+
+.finalContainer {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(107 114 128);
+}
+
+.register {
+    color: #000000;
+    text-decoration: none;
+}
+
+.register:hover {
+    color: #2e2e2e;
+} 
+
+.rightSection {
+    width: 100%; 
+  max-width: 768px; 
+  background-color: #d1d1d1; 
+}
+@media (min-width: 640px) { 
+    .rightSection{
+        width: 2/3;
+    }
+}
+
+.rightSection img {
+    width: 100%;
+    height: auto;
+} 

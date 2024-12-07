@@ -11,7 +11,7 @@ export default function AccountOrders() {
             <div className={styles.sidebarone}>
             </div>
             <div className={styles.maincolumn}>
-
+              Quản lí đơn hàng
             </div>
             <div className={styles.sidebartwo}>
 

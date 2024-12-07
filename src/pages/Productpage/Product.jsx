@@ -20,23 +20,7 @@ const products = [
   { id: 11, name: 'Macbook 5', price: '420.000đ', image: 'link-to-image-2', button: 'CHO VÀO GIỎ HÀNG', description: 'Macbook 5 có hiệu năng vượt trội...', brand: 'Apple', type: 'Laptop' },
   { id: 12, name: 'Macbook 6', price: '810.000đ', image: 'link-to-image-2', button: 'CHO VÀO GIỎ HÀNG', description: 'Macbook 6 có hiệu năng vượt trội...', brand: 'Apple', type: 'Laptop' },
 ];
-// const [products, setProducts] = useState([])
 
-// async function getData() {
-//   try {
-//     const response = await fetch('localhost:3000/product');
-//     if (!response.ok) {
-//       throw new Error(`Response status: ${response.status}`);
-//     }
-
-//     const json = await response.json();
-//     console.log(response.json());
-    
-//     setProducts(response.json())
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// }
 const Product = () => {
   const navigate = useNavigate();
   

@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import  {useState} from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-import { FaSearch,FaShoppingCart, FaHeart, FaUser} from "react-icons/fa";
+import { FaSearch,FaShoppingCart, FaUser} from "react-icons/fa";
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -60,12 +60,17 @@ const NavBar = () => {
                 >
                   Quản lý đơn hàng
                 </NavLink>
-                <button
-                  className={styles.logoutButton}
-                  onClick={() => alert("Đăng xuất thành công!")}
+                <NavLink
+                to="/login"
                 >
-                  Đăng xuất
-                </button>
+                  <button
+                  className={styles.logoutButton}
+                  // onClick={() => alert("Đăng xuất thành công!")}
+                  >
+                  Đăng nhập
+                  </button>
+                </NavLink>
+                
               </div>
             )}
           </div>

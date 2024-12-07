@@ -1,4 +1,4 @@
-export const products_data = [
+const products_data = [
     {
       id: 1,
       name: "Galaxy S21",
@@ -180,8 +180,10 @@ export const products_data = [
       image: "/images/razer_blade_15_laptop.jpg"
     }
   ];
+
+export default products_data;
   
   
-    export const products_categories = [{label:'Mobile',value:'mobile'},{label:'Tablet',value:'tablet'},{label:'Laptop',value:'laptop'}];
+//export const products_categories = [{label:'Mobile',value:'mobile'},{label:'Tablet',value:'tablet'},{label:'Laptop',value:'laptop'}];
     
     
