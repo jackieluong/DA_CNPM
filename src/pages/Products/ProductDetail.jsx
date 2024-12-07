@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 // import ImageSlider from "../../components/ImageSlider.jsx";
 import { Rating } from "@mui/material";
-import ReviewList from "../../components/ReviewList.jsx";
+import ReviewList from "./ReviewList.jsx";
 import PageLayout from "../../Layouts/PageLayout.jsx";
 
 const reviews = [

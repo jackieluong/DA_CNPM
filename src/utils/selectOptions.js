@@ -1,9 +1,7 @@
 export const statusOptions = [
-  { value: "Pending", label: "Pending" },
-  { value: "Inprogress", label: "In Progress" },
   { value: "Processing", label: "Processing" },
+  { value: "Shipping", label: "Shipping" },
   { value: "Delivered", label: "Delivered" },
-  { value: "Returned", label: "Returned" },
   { value: "Cancelled", label: "Cancelled" },
 ];
 
@@ -15,14 +13,14 @@ export const paymentOptions = [
 ];
 
 export const paymentStatusOptions = [
-  { value: "Paid", label: "Paid" },
-  { value: "Unpaid", label: "Unpaid" },
+  { value: "Completed", label: "Completed" },
+  { value: "Uncompleted", label: "Uncompleted" },
 ]
 export const categories = [
   { value: "Phone", label: "Phone" },
   { value: "Tablet", label: "Tablet" },
   { value: "Laptop", label: "Laptop" },
-  {value: "Accessories", label: "Accessories"},
+  {value: "Others", label: "Others"},
 ];
 
 export const colors = [

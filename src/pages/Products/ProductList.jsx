@@ -1,5 +1,5 @@
 import TableProductList from "../../components/Product/TableProductList";
-import TopBar from "../../components/TopBar";
+import TopBar from "../../components/Topbar/TopBar";
 import PageLayout from "../../Layouts/PageLayout";
 
 function ProductList({ productData, setProductData }) {

@@ -1,7 +1,7 @@
 // AdminLayout.jsx
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/Topbar/TopBar";
 
 const AdminLayout = ({ children }) => {
   const [showSideBar, setShowSideBar] = useState(true);

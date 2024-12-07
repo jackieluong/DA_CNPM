@@ -13,6 +13,7 @@ export const AuthWrapper = ({children}) =>{
     const [auth, setAuth] = useState({
         isAuthenticated: false,
         user: {
+        id: "",
         email: "",
         name: ""
         }
