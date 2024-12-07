@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import PageLayout from "../../Layouts/PageLayout";
-import getStatusBadge from "../../utils/getStatusBadge";
+import {getStatusBadge }from "../../utils/getStatusBadge";
 import OrderTable from "../../components/Order/OrderTable";
 import { RiMapPinLine } from "react-icons/ri";
 import { useEffect } from "react";

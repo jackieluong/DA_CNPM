@@ -7,10 +7,11 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
-import getStatusBadge from "../../utils/getStatusBadge";
+import {getStatusBadge, getPaymentStatusBadge} from "../../utils/getStatusBadge";
 import EditModal from "../Modal/EditOrderModal";
 
 import { formatDateTime } from "../../utils/formatDateTime";
+import { updateOrder } from "../../services/OrderService";
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.min.css';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -36,38 +37,24 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
   );
   function handleClickEdit(id) {
     setSelectedOrderId(id);
-    console.log(id);
     
-    //
-
     handleToggleEditModal();
   }
 
-  // function handleClickDelete(id) {
+  
+  async function handleSaveEdit(updatedOrder) {
+    console.log("updatedOrder", updatedOrder);
 
-  //   setSelectedOrderId(id);
-  //   console.log(selectedOrderId);
-  //   handleToggleEditModal();
+    try {
+      const response = await updateOrder(selectedOrderId, updatedOrder);
+      alert(response);
+    } catch (error) {
+      alert(error);
+      return;   
+    }
 
-  // }
-
-  // function handleDeleteOrder() {
-  //   const updatedOrders = orderData.filter(
-  //     (order) => order.order_id !== selectedOrderId
-  //   );
-  //   setOrderData(updatedOrders);
-  // }
-
-  // function handleStatusChange(orderId, newStatus) {
-  //   const updatedOrders = orderData.map((order) =>
-  //     order.order_id === orderId ? { ...order, status: newStatus } : order
-  //   );
-  //   setOrderData(updatedOrders); // Update the state with the modified order data
-  // }
-
-  function handleSaveEdit(updatedOrder) {
     const updatedOrders = orderData.map((order) =>
-      order.order_id === updatedOrder.order_id ? updatedOrder : order
+      order.order_id == selectedOrderId? updatedOrder : order
     );
     setOrderData(updatedOrders);
     // toast.success("Order updated successfully!");
@@ -100,27 +87,12 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
         <Grid
           data={filteredOrderData.map((order) => [
             order.order_id,
-            order.customer_id,
+            order.user_id,
             formatDateTime(order.order_time),
-            `$ ${Number(order.total).toFixed(2)}`,
+        
             order.payment_method,
-            // _(
-            //   <div className="d-flex align-items-center gap-2">
-            //   <div>{getStatusBadge(order.status)}</div> {/* Status Badge */}
-            //   <select
-            //     value={order.status}
-            //     onChange={(e) => handleStatusChange(order.order_id, e.target.value)}
-            //     className="form-select form-select-sm overflow-hidden"
-            //     style={{ maxWidth: "50px", minWidth: "50px" }}
-            //   >
-            //     <option value="pending">Pending</option>
-            //     <option value="in progress">In Progress</option>
-            //     <option value="delivered">Delivered</option>
-            //     <option value="returned">Returned</option>
-            //     <option value="cancelled">Cancelled</option>
-            //   </select>
-            // </div>
-            // ),
+            order.payment_status,
+
             _(getStatusBadge(order.status)),
             _(
               <div className="d-flex gap-2">
@@ -134,7 +106,7 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
                 </Tooltip>
                 <Tooltip title="Edit" placement="top">
                   <button
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-warning btn-sm"
                     onClick={() => handleClickEdit(order.order_id)}
                   >
                     <AiOutlineEdit />{" "}
@@ -155,7 +127,6 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
             "ID",
             "Customer ID",
             "Order Time",
-            "Total",
             "Payment Method",
             "Status",
             "Actions",

@@ -63,45 +63,7 @@ function EditModal({
           <Toast.Body  className="text-white">Order updated successfully!</Toast.Body>
         </Toast>
       </ToastContainer>
-      {/* <div className={`modal ${showModal ? "show" : ""}`} tabIndex="-1">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">{title}</h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                onClick={handleToggleModal}
-              ></button>
-            </div>
-            <div className="modal-body">
-             
-              
-              <SelectInput label="Order Status" options={statusOptions} name="status" value={orderStatus} handleChange={handleChange}  />
-              <SelectInput label="Payment Status" options={paymentOptions} name="payment_status" value={paymentStatus} handleChange={handleChange}  />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-                onClick={handleToggleModal}
-              >
-                {close}
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={()=> handleClickConfirm()}
-              >
-                {confirm}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
+
       <Modal show={showModal} onHide={handleToggleModal} >
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>

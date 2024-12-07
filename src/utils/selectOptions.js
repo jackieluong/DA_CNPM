@@ -14,6 +14,10 @@ export const paymentOptions = [
   { value: "Debit Card", label: "Debit Card" },
 ];
 
+export const paymentStatusOptions = [
+  { value: "Paid", label: "Paid" },
+  { value: "Unpaid", label: "Unpaid" },
+]
 export const categories = [
   { value: "Phone", label: "Phone" },
   { value: "Tablet", label: "Tablet" },

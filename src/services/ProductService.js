@@ -6,6 +6,7 @@ export const fetchProductData = async () => {
   try {
     const response = await axios.get(apiURL);
     
+    
     console.log(response);
     if (response.status !== 200) {
       throw new Error("Failed to fetch product data");
@@ -48,11 +49,14 @@ export const fetchProductData = async () => {
 // };
 
 export const addProduct = async (product) => {
+  axios.post()
   try {
     const response = await axios.post(`${apiURL}/create`, product, {
       headers: {
         "Content-Type": "application/json",
       },
+      
+    
     });
 
     console.log(response);
