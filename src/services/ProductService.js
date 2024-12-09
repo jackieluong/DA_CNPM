@@ -7,7 +7,7 @@ export const fetchProductData = async () => {
     const response = await axios.get(apiURL);
     
     
-    console.log(response);
+    
     if (response.status !== 200) {
       throw new Error("Failed to fetch product data");
     }

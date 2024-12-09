@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SelectInput from "../FormInput/SelectInput";
-import { paymentOptions, statusOptions } from "../../utils/selectOptions";
+import { paymentOptions, paymentStatusOptions, statusOptions } from "../../utils/selectOptions";
 import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 
 
@@ -81,7 +81,7 @@ function EditModal({
         {/* Payment Status Dropdown */}
         <SelectInput
           label="Payment Status"
-          options={paymentOptions}
+          options={paymentStatusOptions}
           name="payment_status"
           value={paymentStatus}
           handleChange={handleChange}

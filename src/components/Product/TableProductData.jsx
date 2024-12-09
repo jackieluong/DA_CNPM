@@ -9,6 +9,7 @@ import initialProductData from "../../datas/ProductData";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import { deleteProduct } from "../../services/ProductService";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 
 function TableProductData({ searchTerm, productData, setProductData }) {
@@ -64,9 +65,19 @@ function TableProductData({ searchTerm, productData, setProductData }) {
         <Grid
           data={productData.map((product) => [
             product.product_id,
-            product.name,
+            _(
+              <div className="d-flex gap-2">
+                <img
+                  src={product.imgUrl}
+                  
+                  style={{ width: "80px", height: "80px", marginLeft: '-24px' }}
+                />
+                <div className="d-flex align-items-center"> {product.name} </div>
+              </div>
+            ),
+            
             product.quantity,
-            `$ ${Number(product.price).toFixed(2)}`,
+            product.price,
             `${Number(product.rating ? product.rating : 0)} ⭐`,
             product.category,
             _(
@@ -100,9 +111,15 @@ function TableProductData({ searchTerm, productData, setProductData }) {
           ])}
           columns={[
             "ID",
-            "Product Name",
+            {
+              name: "Product Name",
+              width: "25%"
+            },
             "Stock",
-            "Price",
+            {
+              name: "Price",
+              formatter: (cell) => formatCurrency(cell),
+            },
             "Rating",
             "Category",
             "Actions",

@@ -65,7 +65,13 @@ body {
     gap: 12px;
     cursor: pointer;
   } */
-
+  .card-animate {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card-animate:hover {
+    transform: scale(1.05); /* Slightly scale up the card */
+  }
   .sidebar {
     padding-top: 16px;
     width: 250px;

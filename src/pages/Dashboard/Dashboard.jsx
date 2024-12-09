@@ -4,13 +4,17 @@ import { IoBagOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import PieChart from "./PieChart";
 import DonutChart from "./DonutChart";
+import { useState } from "react";
 
 function Dashboard() {
-  const totalRevenue = 5500;
-  const totalOrders = 50;
-  const netProfits = 50;
-  const numofCustomers = 100;
-
+  // const totalRevenue = 5500;
+ 
+ 
+ 
+  const [totalRevenue, setTotalRevenue] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
+  const [totalOrderCompleted, setTotalOrderCompleted] = useState(0);
+  const [numofCustomers, setNumOfCustomers] = useState(0);
   const bestSellingProducts = [
     {
       product_id: 1,
@@ -30,7 +34,7 @@ function Dashboard() {
     },
     {
       product_id: 3,
-      name_: "Product 3",
+      name_: "Prodmauct 3",
       price: 80,
       sales: 40,
       quantity: 8,
@@ -51,7 +55,7 @@ function Dashboard() {
 
       <div className="row">
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate">
+          <div className="card card-animate" >
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">
                 Total Revenue{" "}

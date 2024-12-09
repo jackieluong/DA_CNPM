@@ -28,3 +28,17 @@ export const updateOrder = async(id, updatedOrder) => {
     throw error;
   }
 }
+
+
+export const getOrderDetails = async(id) => {
+  try {
+    const response = await axios.get(`${apiURL}/${id}`);
+    if(response.status !== 200) {
+      throw new Error("Failed to get order details");
+    }
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

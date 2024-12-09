@@ -47,7 +47,7 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
 
     try {
       const response = await updateOrder(selectedOrderId, updatedOrder);
-      alert(response);
+      
     } catch (error) {
       alert(error);
       return;   
@@ -60,7 +60,7 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
     // toast.success("Order updated successfully!");
     
   }
-  // console.log(orderData);
+  console.log(orderData);
   return (
     <>
       {/* <Modal
@@ -89,10 +89,8 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
             order.order_id,
             order.user_id,
             formatDateTime(order.order_time),
-        
             order.payment_method,
-            order.payment_status,
-
+            _(getPaymentStatusBadge( order.payment_status)),
             _(getStatusBadge(order.status)),
             _(
               <div className="d-flex gap-2">
@@ -128,6 +126,8 @@ function OrderListTable({ orderData, filteredOrderData, setOrderData }) {
             "Customer ID",
             "Order Time",
             "Payment Method",
+          
+            "Payment Status",
             "Status",
             "Actions",
           ]}

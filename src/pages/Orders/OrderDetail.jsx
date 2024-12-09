@@ -1,16 +1,31 @@
 import { useParams } from "react-router-dom";
 import PageLayout from "../../Layouts/PageLayout";
-import {getStatusBadge }from "../../utils/getStatusBadge";
+import {getPaymentStatusBadge, getStatusBadge }from "../../utils/getStatusBadge";
 import OrderTable from "../../components/Order/OrderTable";
 import { RiMapPinLine } from "react-icons/ri";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getOrderDetails } from "../../services/OrderService";
 function OrderDetail({ orderData, setOrderData }) {
   const { id } = useParams();
-  const selectedOrderId = id;
+  // const selectedOrderId = id;
 
-  const selectedOrder = orderData.find(
-    (order) => order.order_id.toString() === selectedOrderId
-  );
+  // const selectedOrder = orderData.find(
+  //   (order) => order.order_id.toString() === selectedOrderId
+  // );
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  useEffect(() => {
+    async function getOrder(){
+
+      const data = await getOrderDetails(id);
+      setSelectedOrder(data);
+    }
+    getOrder();
+  }, [id]);
+  console.log(selectedOrder);
+
+  if(!selectedOrder){
+    return <div className="d-flex justify-content-center align-items-center vh-50">Loading Order </div>
+  }
 
   return (
     <PageLayout pageTitle="Order Detail">
@@ -42,8 +57,8 @@ function OrderDetail({ orderData, setOrderData }) {
               </h5>
             </div>
             <div className="card-body">
-              <p> Name{selectedOrder.customer_name}</p>
-              <p> Address: {selectedOrder.shipping_address}</p>
+              <p> Name: {selectedOrder.user.user_name}</p>
+              <p> Address: {selectedOrder.address}</p>
             </div>
           </div>
         </div>
@@ -60,13 +75,13 @@ function OrderDetail({ orderData, setOrderData }) {
                   className="img-fluid"
                 ></img>
                 <div className="d-flex flex-column ms-3">
-                  <p>Name: {selectedOrder.customer_name}</p>
-                  <p>ID: {selectedOrder.customer_id}</p>
+                  <p>Name: {selectedOrder.user.user_name}</p>
+                  <p>ID: {selectedOrder.user.user_id}</p>
                 </div>
               </div>
 
-              <p>Email: {selectedOrder.customer_email}</p>
-              <p>Phone: {selectedOrder.customer_phone}</p>
+              <p>Email: {selectedOrder.user.email}</p>
+              {/* <p>Phone: {selectedOrder.customer_phone}</p> */}
             </div>
           </div>
           <div className="card mt-4">
@@ -75,7 +90,7 @@ function OrderDetail({ orderData, setOrderData }) {
             </div>
             <div className="card-body">
               <p> Payment Method: {selectedOrder.payment_method}</p>
-              <p>Payment Status: {selectedOrder.payment_status}</p>
+              <p>Payment Status: {getPaymentStatusBadge( selectedOrder.payment_status)}</p>
             </div>
           </div>
         </div>

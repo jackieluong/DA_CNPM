@@ -1,9 +1,10 @@
 export function getStatusBadge(status) {
+  if(!status) return <span className="badge bg-secondary">Unknown</span>;
     switch (status.toLowerCase()) {
         case 'shipping':
-            return <span className="badge bg-primary text-primary-subtle text-uppercase">InProgress</span>;
+            return <span className="badge bg-primary text-primary-subtle text-uppercase">Shipping</span>;
           case 'processing':
-            return <span className="badge bg-secondary-subtle text-secondary text-uppercase">Pending</span>;
+            return <span className="badge bg-secondary-subtle text-secondary text-uppercase">Processing</span>;
           case 'delivered':
             return <span className="badge bg-success-subtle text-success text-uppercase">Delivered</span>;
           case 'cancelled':
@@ -15,11 +16,12 @@ export function getStatusBadge(status) {
 }
 
 export function getPaymentStatusBadge(payment_status){
+  if(!payment_status) return <span className="badge bg-secondary">Unknown</span>;
   payment_status = payment_status.toLowerCase();
   if(payment_status === 'completed'){
-    return <span className="badge bg-success-subtle text-success text-uppercase">Paid</span>;
+    return <span className="badge bg-success-subtle text-success text-uppercase">Completed</span>;
   }
   else{
-    return <span className="badge bg-danger-subtle text-danger text-uppercase">Unpaid</span>;
+    return <span className="badge bg-danger-subtle text-danger text-uppercase">Not Completed</span>;
   }
 }

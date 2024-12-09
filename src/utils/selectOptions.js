@@ -14,7 +14,7 @@ export const paymentOptions = [
 
 export const paymentStatusOptions = [
   { value: "Completed", label: "Completed" },
-  { value: "Uncompleted", label: "Uncompleted" },
+  { value: "Not Completed", label: "Not Completed" },
 ]
 export const categories = [
   { value: "Phone", label: "Phone" },

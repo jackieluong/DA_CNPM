@@ -10,7 +10,7 @@ const DonutChart = () => {
       horizontalAlign: "center",
     },
     title: {
-      text: "Sales by Shoe Brand", // Chart title
+      text: "Sales by Brand", // Chart title
       align: "center",
       style: {
         fontSize: "16px",

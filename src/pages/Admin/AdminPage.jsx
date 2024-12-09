@@ -65,8 +65,8 @@ function AdminPage() {
         payment_method: item.payment_method,
         payment_status: item.payment_status,
         payment_time: item.payment_time,
-        status_: item.status_,
-        address_: item.address_,
+        status: item.status,
+        address: item.address,
         user_id: item.user_id,
       }));
       setOrderData(standardizedData);
@@ -77,7 +77,7 @@ function AdminPage() {
 
   useEffect(() => {
     fetchProducts();
-    // fetchOrders();
+    fetchOrders();
   }, []);
 
   console.log(productData);
