@@ -1,4 +1,4 @@
-import TableProductList from "../../components/Product/TableProductList";
+import TableProductList from "../../components/Tables/TableProductList";
 import TopBar from "../../components/Topbar/TopBar";
 import PageLayout from "../../Layouts/PageLayout";
 

@@ -2,15 +2,13 @@ import { AiOutlineDollar } from "react-icons/ai";
 import PageLayout from "../../Layouts/PageLayout";
 import { IoBagOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
-import PieChart from "./PieChart";
-import DonutChart from "./DonutChart";
+import PieChart from "../../components/Charts/PieChart";
+import DonutChart from "../../components/Charts/DonutChart";
 import { useState } from "react";
 
 function Dashboard() {
   // const totalRevenue = 5500;
- 
- 
- 
+
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalOrderCompleted, setTotalOrderCompleted] = useState(0);
@@ -55,7 +53,7 @@ function Dashboard() {
 
       <div className="row">
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate" >
+          <div className="card card-animate" style={{height: "150px"}}>
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">
                 Total Revenue{" "}
@@ -70,7 +68,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate">
+          <div className="card card-animate"style={{height: "150px"}} >
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">Net Profit</p>
               <div className="d-flex justify-content-between">
@@ -83,7 +81,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate">
+          <div className="card card-animate"style={{height: "150px"}} >
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">
                 Total Orders
@@ -98,7 +96,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate">
+          <div className="card card-animate" style={{height: "150px"}}>
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">Customers</p>
               <div className="d-flex justify-content-between">

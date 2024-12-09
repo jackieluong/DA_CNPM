@@ -1,4 +1,4 @@
-import OrderListTable from "../../components/Order/OrderListTable";
+import OrderListTable from "../../components/Tables/OrderListTable";
 import PageLayout from "../../Layouts/PageLayout";
 import { useEffect, useState } from "react";
 import TextInput from "../../components/FormInput/TextInput";

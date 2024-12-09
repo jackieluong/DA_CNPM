@@ -1,5 +1,4 @@
-
-import FormInfo from "../../components/Product/FormInfo";
+import FormInfo from "./FormInfo";
 import PageLayout from "../../Layouts/PageLayout";
 
 function CreateProduct({ productData, setProductData }) {

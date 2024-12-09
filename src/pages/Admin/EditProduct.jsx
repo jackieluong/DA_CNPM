@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
-import FormInfo from "../../components/Product/FormInfo";
+import FormInfo from "./FormInfo";
 import PageLayout from "../../Layouts/PageLayout";
 
 function EditProduct({ productData, setProductData }) {
   const { id } = useParams();
   const selectedProductId = id;
-  
-  
+
   const selectedProduct = productData.find(
     (product) => product.product_id === Number(id)
   );

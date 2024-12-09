@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ImgUpload from "../FormInput/ImgUpload";
-import InputGroup from "../FormInput/InputGroup";
-import SelectInput from "../FormInput/SelectInput";
-import TextInput from "../FormInput/TextInput";
+import ImgUpload from "../../components/FormInput/ImgUpload";
+import InputGroup from "../../components/FormInput/InputGroup";
+import SelectInput from "../../components/FormInput/SelectInput";
+import TextInput from "../../components/FormInput/TextInput";
 import { useNavigate } from "react-router-dom";
 import { addProduct, updateProduct } from "../../services/ProductService";
 import { colors, categories } from "../../utils/selectOptions";
@@ -12,7 +12,6 @@ import { colors, categories } from "../../utils/selectOptions";
 //   { value: "Sport Wear", label: "Sport Wear" },
 // ];
 
-
 // const sizes = [
 //   { value: "S", label: "S" },
 //   { value: "M", label: "M" },
@@ -20,8 +19,6 @@ import { colors, categories } from "../../utils/selectOptions";
 //   { value: "XL", label: "XL" },
 //   { value: "2XL", label: "2XL" },
 // ];
-
-
 
 const initialProductState = {
   name: "",
@@ -32,7 +29,6 @@ const initialProductState = {
   price: "",
   imgUrl: "",
 };
-
 
 // const apiURL = "http://localhost/BTL/btl_web_core/temp_api/api.php/product";
 function FormInfo({ productData, setProductData, selectedProduct }) {
@@ -47,7 +43,7 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    
+
     setProduct((prevProduct) => ({
       ...prevProduct,
       [name]: value,
@@ -64,36 +60,34 @@ function FormInfo({ productData, setProductData, selectedProduct }) {
 
     try {
       if (selectedProduct) {
-      
-        const response = await updateProduct(selectedProduct.product_id, product);
-        
+        const response = await updateProduct(
+          selectedProduct.product_id,
+          product
+        );
+
         // if(!response.ok){
         //   const errorData = await response.json() // Ensure to extract JSON message
         //   throw new Error(
         //     `Failed to update product: ${errorData.message || response.statusText}`
         //   );
         // }
-        
-        
+
         const updatedProducts = productData.map((item) =>
           item.product_id === selectedProduct.product_id ? product : item
         );
         setProductData(updatedProducts);
         alert("Product updated successfully");
       } else {
-   
         console.log(product);
         // Add new product to database
 
-          const response = await addProduct(product);        
-          
-          const newProduct = { ...product, product_id: response.newProductID }; 
-          console.log(newProduct);
-          // Add the new product to the start of productData
-          setProductData((productData)=> [newProduct, ...productData]);
-          alert("Product added successfully");
-        
-       
+        const response = await addProduct(product);
+
+        const newProduct = { ...product, product_id: response.newProductID };
+        console.log(newProduct);
+        // Add the new product to the start of productData
+        setProductData((productData) => [newProduct, ...productData]);
+        alert("Product added successfully");
       }
 
       setProduct(initialProductState);

@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom";
 import PageLayout from "../../Layouts/PageLayout";
-import {getPaymentStatusBadge, getStatusBadge }from "../../utils/getStatusBadge";
-import OrderTable from "../../components/Order/OrderTable";
+import {
+  getPaymentStatusBadge,
+  getStatusBadge,
+} from "../../utils/getStatusBadge";
+import OrderTable from "../../components/Tables/OrderTable";
 import { RiMapPinLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { getOrderDetails } from "../../services/OrderService";
@@ -14,8 +17,7 @@ function OrderDetail({ orderData, setOrderData }) {
   // );
   const [selectedOrder, setSelectedOrder] = useState(null);
   useEffect(() => {
-    async function getOrder(){
-
+    async function getOrder() {
       const data = await getOrderDetails(id);
       setSelectedOrder(data);
     }
@@ -23,8 +25,12 @@ function OrderDetail({ orderData, setOrderData }) {
   }, [id]);
   console.log(selectedOrder);
 
-  if(!selectedOrder){
-    return <div className="d-flex justify-content-center align-items-center vh-50">Loading Order </div>
+  if (!selectedOrder) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-50">
+        Loading Order{" "}
+      </div>
+    );
   }
 
   return (
@@ -90,7 +96,10 @@ function OrderDetail({ orderData, setOrderData }) {
             </div>
             <div className="card-body">
               <p> Payment Method: {selectedOrder.payment_method}</p>
-              <p>Payment Status: {getPaymentStatusBadge( selectedOrder.payment_status)}</p>
+              <p>
+                Payment Status:{" "}
+                {getPaymentStatusBadge(selectedOrder.payment_status)}
+              </p>
             </div>
           </div>
         </div>
