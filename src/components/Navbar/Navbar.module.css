@@ -6,6 +6,12 @@
     background-color: white;
     border-bottom: 1px solid #ddd;
 }
+.imgLogo {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    cursor: pointer;
+}
 .navLinks {
     list-style: none;
     display: flex;
@@ -18,8 +24,8 @@
     color: black;
     text-decoration: none;
     font-size: 16px;
-    position: relative; /* Để hỗ trợ ::after */
-    padding: 5px 0; /* Tạo không gian cho underline */
+    position: relative; 
+    padding: 5px 0;
 }
 .navLink::after {
     content: "";
@@ -27,12 +33,12 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px; /* Độ dày của underline */
-    background-color: black; /* Màu underline */
-    transition: width 0.25s ease-in-out; /* Hiệu ứng transition */
+    height: 2px;
+    background-color: black;
+    transition: width 0.25s ease-in-out;
 }
 .navLink:hover::after {
-    width: 100%; /* Khi hover, underline sẽ kéo dài toàn bộ */
+    width: 100%; 
 }
 .navLinkActive{
     position: relative;
@@ -44,7 +50,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; /* Dấu gạch dưới đầy đủ */
+    width: 100%; 
     height: 2px;
     background-color: black;
 }

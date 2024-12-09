@@ -10,6 +10,8 @@ import Product from './pages/Productpage/Product'
 import ProductDetails from './pages/Detail/ProductDetails'
 import Cart from './pages/Cartpage/Cart'
 
+import Payment from './pages/Payment/Payment'
+
 export const router = createBrowserRouter([
     {
     path: '/',
@@ -59,6 +61,10 @@ export const router = createBrowserRouter([
         element: <Cart/>,
         errorElement: <ErrorPage/>
     },
+    {
+        path: '/payment',
+        element: <Payment/>
+    }
 
   
 //   {

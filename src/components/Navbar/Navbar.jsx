@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 import { FaSearch,FaShoppingCart, FaUser} from "react-icons/fa";
+import Logo from '../../assets/Logo.png'
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -12,10 +13,15 @@ const NavBar = () => {
   const handleMouseLeave = () => {
     setIsDropdownOpen(false);
   };
+  
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <h1 className={styles.logo}>Shop</h1>
+        <NavLink
+        to="/"
+        >
+        <img src={Logo} alt="Logo" className={styles.imgLogo}/>
+        </NavLink>
         <ul className={styles.navLinks}>
             <li>
                 <NavLink

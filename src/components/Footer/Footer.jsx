@@ -25,8 +25,8 @@ export default function Footer() {
             <div className={styles['follow us']}>
                 <h4>Follow us</h4>
                 <div className={styles['link-follow']}>
-                    <a href=""><FaFacebook/></a>
-                    <a href=""><FaInstagramSquare/></a>
+                    <a href="https://www.facebook.com/"><FaFacebook/></a>
+                    <a href="https://www.instagram.com/"><FaInstagramSquare/></a>
                     <a href=""><BiLogoGmail/></a>
                 </div>
             </div>

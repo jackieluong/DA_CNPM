@@ -33,7 +33,7 @@
 
 
 .topPage h2 {
-    margin-top: 0;
+    margin-top: 15px;
     text-align: center;
     font-size: 1.5rem;
     line-height: 2.25rem;
@@ -158,3 +158,64 @@
     width: 100%;
     height: auto;
 } 
+
+
+.SubmitButton {
+    display: flex;
+    width: 100%;
+    height: 2.75rem; /* 11 x 0.25rem */
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 0.75rem; /* rounded-xl */
+    background-color: #292929;
+    padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
+    transition: background-color 0.3s ease;
+}
+  
+.SubmitButton:hover {
+    background-color: #464646; /* hover:bg-primary-400 */
+}
+
+.SubmitButton:focus-visible {
+    outline: 2px solid #292929;
+    outline-offset: 2px;
+}
+
+.inputForm {
+    margin-top: 8px;
+}
+.inputForm  input{
+    display: block;
+    width: 100%;
+    height: 44px;
+    border: none;
+    background-color: rgb(243 244 246);;
+    border-radius: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-ring-inset: inset;
+    color: #111827;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+.inputForm input::placeholder {
+    color: rgb(156 163 175);
+}
+  
+.inputForm input:focus {
+    --tw-ring-inset: inset;
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+}
+
+@media (min-width: 640px) {
+    .inputForm {
+        font-size: 0.875rem; 
+        line-height: 1.5rem;
+    }
+}
