@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import styles from './ProductDetails.module.css';
 import NavBar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 
 import * as ProductList from '../../services/ProductService';
+import { AuthContext } from '../../context/auth.context';
+import { useCart } from '../../context/cart.context';
 
 const ProductDetails = () => {
   const { id } = useParams(); // Lấy ID từ URL
@@ -15,7 +17,16 @@ const ProductDetails = () => {
   const [error, setError] = useState(null); // Lỗi nếu có
   const [activeTab, setActiveTab] = useState("info");
 
-  
+  const {addToCart} = useCart();
+  const {auth} = useContext(AuthContext);
+  const handleClickAdd = (product) => {
+    if (!auth.isAuthenticated) {
+      alert("Bạn cần phải đăng nhập để thực hiện chúc năng này");
+    } else {
+      addToCart(product);
+    alert("Thêm vào giỏ hàng thành công");
+    }
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -73,7 +84,7 @@ const ProductDetails = () => {
                     Giá: <strong>{changePrice(pro.price) + "đ"}</strong>
                   </p>
                   <div className={styles.actions}>
-                    <button className={styles.addToCartButton}>Cho vào giỏ hàng</button>
+                    <button className={styles.addToCartButton} onClick={() => handleClickAdd(pro)}>Cho vào giỏ hàng</button>
                   </div>
                 </div>
               </div>

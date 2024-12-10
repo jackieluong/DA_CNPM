@@ -38,21 +38,35 @@ export const router = createBrowserRouter([
         element: <AccountOrders />,
         errorElement: <ErrorPage/>
     },
-    {
-        path: '/product',
-        element: <Product/>,
-        errorElement: <ErrorPage/>,
+    // {
+    //     path: '/product',
+    //     element: <Product/>,
+    //     errorElement: <ErrorPage/>,
         
-    },
+    // },
+    // {
+    //     path: '/product',
+    //     element: <ProductDetails />,
+    //     errorElement: <ErrorPage/>,
+    //     children: [
+    //         {
+    //         path: ':id',
+    //         element: <ProductDetails />,
+    //         errorElement: <ErrorPage/>
+    //         },
+    //     ],
+    // },
     {
         path: '/product',
-        element: <ProductDetails />,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
-            path: ':id',
-            element: <ProductDetails />,
-            errorElement: <ErrorPage/>
+                index: true, // Default child route for /product
+                element: <Product />,
+            },
+            {
+                path: ':id', // Dynamic route for product details
+                element: <ProductDetails />,
             },
         ],
     },

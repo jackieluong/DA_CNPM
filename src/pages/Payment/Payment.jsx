@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Payment.module.css';
+import { useCart } from '../../context/cart.context';
+import NavBar from '../../components/Navbar/Navbar';
 
 const Payment = () => {
   const products = [
@@ -8,7 +10,14 @@ const Payment = () => {
     { id: 3, name: 'Dầu bôi trơn khuôn SHIN-ETSU-KMK', price: 175000, quantity: 1, image: '/images/shinetsu.jpg' },
   ];
 
+  const {cartItems, getTotalPrice, getTotalItems} = useCart();
+
+  const subTotal = getTotalPrice();
+  const totalItems = getTotalItems();
+  const ship_fee = 50e3;
   return (
+    <>
+    <NavBar />
     <div className={styles.checkoutPage}>
       <h1 className={styles.logo}>e-shop.com.vn</h1>
 
@@ -71,22 +80,22 @@ const Payment = () => {
 
         {/* Đơn hàng */}
         <div className={styles.section}>
-          <h2>Đơn hàng (6 sản phẩm)</h2>
+          <h2>Đơn hàng ({totalItems} sản phẩm)</h2>
           <div className={styles.orderItems}>
-            {products.map((product) => (
-              <div className={styles.orderItem} key={product.id}>
-                <img src={product.image} alt={product.name} className={styles.productImage} />
+            {cartItems.map((item) => (
+              <div className={styles.orderItem} key={item.product.product_id}>
+                <img src={item.product.imgUrl} alt={item.product.name} className={styles.productImage} />
                 <div className={styles.productDetails}>
-                  <p>{product.quantity} x {product.name}</p>
-                  <p>{product.price.toLocaleString()}đ</p>
+                  <p>{item.quantity} x {item.product.name}</p>
+                  <p>{(item.quantity * item.product.price).toLocaleString()}đ</p>
                 </div>
               </div>
             ))}
           </div>
           <div className={styles.total}>
-            <p>Tạm tính: 3.749.000đ</p>
-            <p>Phí vận chuyển: 100.000đ</p>
-            <h3>Tổng cộng: 3.849.000đ</h3>
+            <p>Tạm tính: {subTotal.toLocaleString()}</p>
+            <p>Phí vận chuyển: {ship_fee.toLocaleString()}</p>
+            <h3>Tổng cộng: {(subTotal + ship_fee).toLocaleString()}</h3>
           </div>
           <button type="submit" className={styles.orderButton}>
             Đặt Hàng
@@ -94,6 +103,7 @@ const Payment = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

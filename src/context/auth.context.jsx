@@ -12,7 +12,7 @@ export const AuthContext = createContext({
 
 export const AuthWrapper = ({children}) =>{
     const [auth, setAuth] = useState({
-        isAuthenticated: false,
+        isAuthenticated: true,
         user: {
         id: "",
         email: "",
