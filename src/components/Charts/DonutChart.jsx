@@ -1,10 +1,13 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import { formatCurrency } from "../../utils/formatCurrency";
 
-const DonutChart = () => {
+const DonutChart = ({data}) => {
+  const labels = data.map(item => item.brand); // Extract brand names for labels
+  const series = data.map(item => parseFloat(item.revenue)); // Extract revenue values and convert to numbers
   // Chart data and configuration
   const options = {
-    labels: ["Nike", "Adidas", "Puma", "Reebok", "Others"], // Shoe brands
+    labels: labels, // Shoe brands
     legend: {
       position: "bottom", // Place legend below the chart
       horizontalAlign: "center",
@@ -17,18 +20,18 @@ const DonutChart = () => {
         fontWeight: "bold",
       },
     },
-    dataLabels: {
-      enabled: true, // Show data labels inside the chart
-      formatter: (val) => `${val.toFixed(1)}%`, // Format as percentage
-    },
+    // dataLabels: {
+    //   enabled: true, // Show data labels inside the chart
+    //   formatter: (val) => `${val.toFixed(1)}%`, // Format as percentage
+    // },
     tooltip: {
       y: {
-        formatter: (val) => `$${val}%`, // Format tooltip values as sales in 'K'
+        formatter: (val) => formatCurrency(val), // Format tooltip values as sales in 'K'
       },
     },
   };
 
-  const series = [40, 30, 15, 10, 5]; // Sales in 'K' (e.g., 40K for Nike)
+  
 
   return (
     <div>
