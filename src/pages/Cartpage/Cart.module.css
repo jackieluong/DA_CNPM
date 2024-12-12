@@ -1,0 +1,133 @@
+.cartPage {
+  background-color: #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.carContainer {
+  margin: 0 40px;
+  padding: 10px;
+}
+.cartContent {
+  margin: auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cartHeader, .cartRow {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr 1fr 1fr 50px;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cartHeader {
+  font-weight: bold;
+}
+
+.productImage {
+  width: 80px;
+  height: auto;
+  object-fit: cover;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+.quantity .numberofitem{
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: white;
+}
+
+.deleteIcon {
+  width: 25px;
+  height: 25px;
+  color: red;
+  cursor: pointer;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.continueButton, .checkoutButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.continueButton {
+  background: #fff;
+  border: 1px solid #555;
+  color: #333333;
+  border-radius: 5px;
+}
+.continueButton:hover {
+  color: white;
+  background-color: #292929;
+}
+
+.checkoutButton {
+  background: #292929;
+  border: 1px solid #292929;
+  color: #fff;
+  border-radius: 5px;
+}
+.checkoutButton:hover {
+  border: 1px solid #464646;
+  background-color: #464646;
+}
+
+.h3{
+  color: #171717;
+  font-size: 50px;
+  font-weight: 600;
+  align-items: center;
+}
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}

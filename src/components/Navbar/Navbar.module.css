@@ -1,0 +1,160 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+.imgLogo {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navLink {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative; 
+    padding: 5px 0;
+}
+.navLink::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.25s ease-in-out;
+}
+.navLink:hover::after {
+    width: 100%; 
+}
+.navLinkActive{
+    position: relative;
+    padding: 5px 0;
+}
+
+.navLinkActive::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 2px;
+    background-color: black;
+}
+.navLinkcart{
+    color: black;
+}
+.navLinkcart:hover{
+    color: #6b6b6b;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rightSection input {
+    max-width: 300px;
+    height: 30px;
+}
+.searchBar {
+    width: 250px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: none;
+    outline: none;
+    background-color: #ddd;
+  }
+.searchButton {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.iconUser {
+    font-size: 18px;
+}
+.iconUser img {
+    width: 20px;
+    height: 20px;
+}
+.icons span {
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.navItem {
+    position: relative;
+    cursor: pointer;
+    
+}
+  
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+}
+
+.dropdownItem {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.logoutButton {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #292929;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background-color:#464646;
+}
+
+
+.iconCart {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+.iconCart img {
+    width: 21px;
+    height: 21px;
+}
+.iconCart p {
+    font-size: 16px;
+}

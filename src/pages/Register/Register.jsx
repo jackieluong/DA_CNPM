@@ -1,56 +1,59 @@
-import styles from "./Login.module.css";
-import { Form, useNavigate } from "react-router-dom";
 import iconGoogle from "../../assets/google.png";
-import iconLogin from "../../assets/Login.png";
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import { handleLogin } from "../../services/userService";
-import { AuthContext } from "../../context/auth.context";
+import iconLogin from "../../assets/login.png";
+import { Form, Link } from "react-router-dom";
+import styles from "./Register.module.css";
+import { useState } from "react";
+import { handleRegister } from "../../services/userService";
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const { auth, setAuth } = useContext(AuthContext);
-
-  const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
 
   const handleSumit = async (e) => {
     e.preventDefault();
-    console.log("email: ", email, "password: ", password);
+
     try {
-      const response = await handleLogin(email, password);
-
-      localStorage.setItem("accessToken", response.accessToken);
-
-      setAuth({
-        isAuthenticated: true,
-        user: {
-          id: response.user.id,
-          email: response.user.email,
-        },
-      });
-      
+      const response = await handleRegister(
+        email,
+        password,
+        name,
+        birthday,
+        gender
+      );
+      console.log(response);
       alert(response.message);
-      navigate("/");
     } catch (error) {
       console.log(error);
+      alert(error.response.data.message);
     }
   };
+
   return (
     <div className={styles.loginPage}>
       <div className={styles.leftSection}>
         <div className={styles.topPage}>
-          <h2>Đăng nhập</h2>
+          <h2>Đăng ký</h2>
         </div>
         <div className={styles.container}>
           <Form method="POST" onSubmit={handleSumit}>
             <div className={styles.inputForm}>
               <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder={"Họ và tên"}
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                required
+              />
+              <input
                 id="email"
                 name="email"
                 type="email"
                 placeholder={"Email"}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -59,7 +62,17 @@ function Login() {
                 name="password"
                 type="password"
                 placeholder={"Mật khẩu"}
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <input
+                id="confirm-password"
+                name="confirm-password"
+                type="password"
+                value={confirmPassword}
+                placeholder={"Nhập lại mật khẩu"}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
@@ -67,7 +80,7 @@ function Login() {
               <a href="#">Quên mật khẩu?</a>
             </div>
             <button type="submit" className={styles.SubmitButton}>
-              Đăng nhập
+              Đăng ký
             </button>
           </Form>
           <div className={styles.betweenContainer}>
@@ -82,9 +95,9 @@ function Login() {
             </a>
           </div>
           <p className={styles.finalContainer}>
-            Chưa có tài khoản?{" "}
-            <Link to="/register" className={styles.register}>
-              Đăng ký
+            Đã có tài khoản?{" "}
+            <Link to="/login" className={styles.register}>
+              Đăng nhập
             </Link>
           </p>
         </div>
@@ -96,4 +109,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

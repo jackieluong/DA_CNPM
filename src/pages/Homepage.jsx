@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
 
-const HomePage = () => {
-    // const res = fetch('http://localhost/btl_web_core/api/products').then(res => res.json()).then(data => console.log(data));    
+import NavBar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
+import HomepageBody from '../components/HomepageBody/HomepageBody';
+import InfoForShop from '../components/HomepageBody/InfoForShop';
+import { useContext } from 'react';
+import { AuthContext } from '../context/auth.context';
+
+function Homepage() {
+    const {auth} = useContext(AuthContext);
+    console.log("auth: ", auth);
+
+    const accessToken = localStorage.getItem("accessToken");
+    console.log("accessToken: ", accessToken);
     return (
-        <h1 className="text-3xl font-bold underline">
-            Hello world!
-        </h1>
+        <div>
+            <div>
+                <NavBar/>
+            </div>
+            <HomepageBody/>
+            <InfoForShop/>
+            <div>
+                <Footer/>
+            </div>
+        </div>
     )
 }
 
-export default HomePage;
+export default Homepage;
