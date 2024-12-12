@@ -23,7 +23,7 @@ export const fetchProductDetail = async (id) => {
     const response = await axios.get(`http://localhost:8080/api/v1/product/${id}`);
     
     
-    console.log(response);
+    console.log(response.data.data);
     if (response.status !== 200) {
       throw new Error("Failed to fetch product data");
     }

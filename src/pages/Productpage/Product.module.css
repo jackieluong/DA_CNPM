@@ -3,6 +3,7 @@
   max-width: 1200px; 
   margin: 0 auto;
   text-align: center;
+  
 }
 .container {
   display: grid;
@@ -36,7 +37,7 @@
 }
 .productCard {
   max-width: 250px;
-  height: 290px;
+  height: 320px;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -47,6 +48,7 @@
 
 .productCard:hover {
   box-shadow: 2px 8px 12px rgba(0, 0, 0, 0.1);
+  ;
 }
 
 .image {

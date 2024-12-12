@@ -46,7 +46,7 @@ const NavBar = () => {
         </ul>
         <div className={styles.rightSection}>
           <input type="text" placeholder="tìm kiếm..." className={styles.searchBar}/>
-          <button className={styles.searchButton}> <FaSearch/></button>
+          <button className={styles.searchButton}   > <FaSearch/></button>
           <div className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

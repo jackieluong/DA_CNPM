@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-//import { loginAction, registerAction } from '~/apis/postAPIs'
 import Home from './pages/Homepage'
 import ErrorPage from './pages/PageNotFound'
 import Login from './pages/Login/Login'
@@ -40,19 +39,15 @@ export const router = createBrowserRouter([
     },
     {
         path: '/product',
-        element: <Product/>,
-        errorElement: <ErrorPage/>,
-        
-    },
-    {
-        path: '/product',
-        element: <ProductDetails />,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
-            path: ':id',
-            element: <ProductDetails />,
-            errorElement: <ErrorPage/>
+                index: true, // Default child route for /product
+                element: <Product />,
+            },
+            {
+                path: ':id', // Dynamic route for product details
+                element: <ProductDetails />,
             },
         ],
     },
@@ -65,12 +60,4 @@ export const router = createBrowserRouter([
         path: '/payment',
         element: <Payment/>
     }
-
-  
-//   {
-//     path: '/register',
-//     element: <Register />,
-//     errorElement: <ErrorPage />,
-//     action: registerAction
-//   }
 ])
