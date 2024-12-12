@@ -21,23 +21,23 @@ function ReviewList({ reviews }) {
         padding: "10px",
       }}
     >
-      {reviews.length > 0 ? (
+      {reviews && reviews.length > 0 ? (
         reviews.map((review) => (
           <li
-            key={review.id}
+            key={review.user_name}
             className="review-item mb-3 p-3 rounded border-bottom"
           >
             <div className="d-flex justify-content-between align-items-center">
-              <h6 className="mb-0">{review.name}</h6>
+              <h6 className="mb-0">{review.user_name}</h6>
               <Rating
                 name="read-only"
-                value={review.rating}
+                value={review.score}
                 readOnly
                 precision={0.5}
               />
             </div>
-            <p className="text-muted mt-1">{review.comment}</p>
-            <small className="text-muted">{formatDate(review.date)}</small>{" "}
+            <p className="text-muted mt-1">{review.content}</p>
+            <small className="text-muted">{formatDate(review.feedback_time)}</small>{" "}
             {/* Use formatted date */}
           </li>
         ))

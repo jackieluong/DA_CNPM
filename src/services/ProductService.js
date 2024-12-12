@@ -18,36 +18,18 @@ export const fetchProductData = async () => {
   }
 };
 
-// Add a new product
-// export const addProduct = async (product) => {
-//   try {
-//     const response = await fetch(apiURL, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(product),
-//     });
-
-//     //   if (!response.ok) {
-//     //     throw new Error("Failed to add product");
-//     //   }
-//     if (!response.ok) {
-//       const errorData = await response.json().catch(() => ({}));
-//       throw new Error(
-//         `Failed to add product: ${
-//           errorData.error || response.statusText
-//         } (Status: ${response.status})`
-//       );
-//     }
-
-//     return await response.json();
-//   } catch (error) {
-//     console.error("Error adding product:", error);
-//     throw error;
-//   }
-// };
-
+export const fetchProductByID = async (id) => {
+  console.log("product id", id);
+  try {
+    const response = await axios.get(`${apiURL}/${id}`);
+    
+    console.log(response);
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error; // Propagate the error for handling in the calling component
+  }
+};
 export const addProduct = async (product) => {
   axios.post()
   try {
@@ -80,6 +62,7 @@ export const deleteProduct = async (productId) => {
     throw error;
   }
 };
+
 
 // Updating a product
 export const updateProduct = async (id, updatedProduct) => {

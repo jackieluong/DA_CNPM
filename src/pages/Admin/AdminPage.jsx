@@ -26,7 +26,7 @@ function AdminPage() {
   const [productData, setProductData] = useState(initialProductData);
 
   const [orderData, setOrderData] = useState(initialOrderData);
-  const [customerData, setCustomerData] = useState(initialCustomersData);
+  
   const [promotionData, setPromotionData] = useState(samplePromotionData);
 
   async function fetchProducts() {
@@ -75,7 +75,7 @@ function AdminPage() {
     fetchOrders();
   }, []);
 
-  console.log(productData);
+  
   return (
     <AdminLayout>
       <Routes>
@@ -128,7 +128,7 @@ function AdminPage() {
           <Route
             path="detail/:id"
             element={
-              <OrderDetail orderData={orderData} setOrderData={setOrderData} />
+              <OrderDetail />
             }
           />
         </Route>
@@ -137,12 +137,11 @@ function AdminPage() {
             path="list"
             element={
               <CustomerList
-                customerData={customerData}
-                setCustomerData={setCustomerData}
+              
               />
             }
           />
-          <Route path="detail/:id" />
+          {/* <Route path="detail/:id" /> */}
         </Route>
         <Route path="promotions">
           <Route

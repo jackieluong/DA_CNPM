@@ -6,45 +6,46 @@ import { AiOutlineEdit } from "react-icons/ai";
 
 
 function CustomerTableList({ customerData, setCustomerData }) {
+  
   return (
     <>
       <Grid
         data={customerData.map((customer) => [
           customer.user_id,
-          customer.name_,
+          customer.name,
           customer.gender,
           customer.email,
           formatDate(customer.birthday),
+          customer.role,
           
-          
-          _(
-            <div className="d-flex gap-2">
-              <Tooltip title="View" placement="top">
-                <button
-                  className="btn btn-light btn-sm"
-                //   onClick={() => handleClickView(product.product_id)}
-                >
-                  <MdOutlineRemoveRedEye />{" "}
-                </button>
-              </Tooltip>
-              <Tooltip title="Edit" placement="top">
-                <button
-                  className="btn btn-primary btn-sm"
-                //   onClick={() => handleClickEdit(product.product_id)}
-                >
-                  <AiOutlineEdit />{" "}
-                </button>
-              </Tooltip>
-              <Tooltip title="Delete" placement="top">
-                <button
-                  className="btn btn-danger btn-sm"
-                //   onClick={() => handleClickDelete(product.product_id)}
-                >
-                  <MdOutlineDelete />{" "}
-                </button>
-              </Tooltip>
-            </div>
-          ),
+          // _(
+          //   <div className="d-flex gap-2">
+          //     <Tooltip title="View" placement="top">
+          //       <button
+          //         className="btn btn-light btn-sm"
+          //       //   onClick={() => handleClickView(product.product_id)}
+          //       >
+          //         <MdOutlineRemoveRedEye />{" "}
+          //       </button>
+          //     </Tooltip>
+          //     <Tooltip title="Edit" placement="top">
+          //       <button
+          //         className="btn btn-primary btn-sm"
+          //       //   onClick={() => handleClickEdit(product.product_id)}
+          //       >
+          //         <AiOutlineEdit />{" "}
+          //       </button>
+          //     </Tooltip>
+          //     <Tooltip title="Delete" placement="top">
+          //       <button
+          //         className="btn btn-danger btn-sm"
+          //       //   onClick={() => handleClickDelete(product.product_id)}
+          //       >
+          //         <MdOutlineDelete />{" "}
+          //       </button>
+          //     </Tooltip>
+          //   </div>
+          // ),
         ])}
         columns={[
           "ID",
@@ -52,7 +53,8 @@ function CustomerTableList({ customerData, setCustomerData }) {
           "Gender",
           "Email",
           "Birthday",
-          "Action",
+          "Role"
+          
         ]}
         search={true}
         sort={true}
