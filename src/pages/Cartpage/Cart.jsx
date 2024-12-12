@@ -97,6 +97,7 @@ import styles from './Cart.module.css';
 
 import trashIcon from '../../assets/trash.png';
 import NavBar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 import { useCart } from '../../context/cart.context';
 import { useNavigate } from 'react-router-dom';
 
@@ -184,6 +185,7 @@ const Cart = () => {
           
         }
       </div>
+      <Footer/>
     </div>
   );
 };

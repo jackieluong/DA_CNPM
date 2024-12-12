@@ -2,8 +2,10 @@ import  {useState} from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-import {FaShoppingCart, FaUser} from "react-icons/fa";
+// import { FaUser} from "react-icons/fa";
 import Logo from '../../assets/Logo.png'
+import iconCart from '../../assets/iconCart.png'
+import iconUser from '../../assets/iconUser.png'
 
 
 
@@ -55,14 +57,26 @@ const NavBar = () => {
                 </NavLink>
             </li>
         </ul>
+        
         <div className={styles.rightSection}>
-          {/* <input type="text" placeholder="tìm kiếm..." className={styles.searchBar}/>
-          <button className={styles.searchButton}   > <FaSearch/></button> */}
+          <div className={styles.icons}>
+              <span><NavLink to="/cart"
+                        className={({ isActive }) =>
+                        isActive ? `${styles.navLinkcart}` : styles.navLinkcart
+                        }
+                      >
+                        <div className={styles.iconCart}>
+                          <img src={iconCart} alt="icon" />
+                          <p>Giỏ hàng</p>
+                        </div>
+                    </NavLink>
+              </span>
+          </div>
           <div className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <span className={styles.iconUser}> <FaUser/></span>
+            <span className={styles.iconUser}> <img src={iconUser} alt="icon" /></span>
             {isDropdownOpen && (
               <div className={styles.dropdown}>
                 <NavLink
@@ -75,7 +89,7 @@ const NavBar = () => {
                   to="/account/orders"
                   className={styles.dropdownItem}
                 >
-                  Lịch sử đặt hàng
+                  Đơn hàng của tôi
                 </NavLink>
                 <NavLink
                 to="/login"
@@ -87,20 +101,10 @@ const NavBar = () => {
                   Đăng nhập
                   </button>
                 </NavLink>
-                
               </div>
             )}
           </div>
-          <div className={styles.icons}>
-            <span><NavLink to="/cart"
-                      className={({ isActive }) =>
-                      isActive ? `${styles.navLinkcart}` : styles.navLinkcart
-                      }
-                    >
-                      <FaShoppingCart/>
-                    </NavLink>
-              </span>
-          </div>
+          
         </div>
       </nav>
     </header>

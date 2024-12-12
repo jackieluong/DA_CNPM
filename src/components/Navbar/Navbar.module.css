@@ -64,7 +64,7 @@
 .rightSection {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .rightSection input {
@@ -87,6 +87,10 @@
 }
 .iconUser {
     font-size: 18px;
+}
+.iconUser img {
+    width: 20px;
+    height: 20px;
 }
 .icons span {
     font-size: 18px;
@@ -139,4 +143,18 @@
 
 .logoutButton:hover {
     background-color:#464646;
+}
+
+
+.iconCart {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+.iconCart img {
+    width: 21px;
+    height: 21px;
+}
+.iconCart p {
+    font-size: 16px;
 }

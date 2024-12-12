@@ -41,20 +41,13 @@
     gap: 15px;
 }
   
-/* .orderItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
-} */
+
 .orderItem {
     display: flex;
     flex-direction: column;
     padding: 10px 30px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fff;
 }
 
@@ -64,7 +57,7 @@
 }
 
 .orderItem hr {
-    margin-top: -5px;
+    margin-top: 0px;
 }
   
 .orderInfo h3 {
@@ -94,7 +87,28 @@
 }
   
 .totalPrice {
-    color: #ff4d4f;
+    color: black;
+    font-weight: bold;
+}
+
+
+.pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.shipping {
+    color: blue;
+    font-weight: bold;
+}
+
+.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.canceled {
+    color: red;
     font-weight: bold;
 }
 

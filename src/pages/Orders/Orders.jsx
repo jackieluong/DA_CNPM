@@ -72,6 +72,20 @@ const Orders = () => {
     const [filter, setFilter] = useState("Tất cả");
     const filteredOrders = filter === "Tất cả" ? orders : orders.filter((order) => order.status === filter);
     const tabContent = ["Tất cả", "Chờ xác nhận", "Vận chuyển", "Hoàn thành", "Đã hủy",]
+    const getStatusClass = (status) => {
+      switch (status) {
+        case "Chờ xác nhận":
+          return styles.pending;
+        case "Vận chuyển":
+          return styles.shipping;
+        case "Hoàn thành":
+          return styles.completed;
+        case "Đã hủy":
+          return styles.canceled;
+        default:
+          return "";
+      }
+    };
     return (
         <div>
         <NavBar />
@@ -96,7 +110,7 @@ const Orders = () => {
                     <h6>
                         Mã đơn hàng: <strong>{order.id}</strong>
                     </h6>
-                    <span className={styles.status}>{order.status}</span>
+                    <span className={getStatusClass(order.status)}>{order.status}</span>
                     </div>
                     <hr />
                     <div className={styles.orderInfo}>

@@ -8,22 +8,21 @@ export default function Footer() {
     <footer className={styles['footer']}>
         <div className={styles['footer-content']}>
             <div className={styles['info-shop']}>
-                <h3>e-Shop</h3>
-                <p>E-shop là gian hàng trực tuyến (mua hàng online). 
+                <h4>Technology-Shop</h4>
+                <p>Technology-shop là gian hàng trực tuyến (mua hàng online). 
                     Với mong muốn mang lại sự tiện lợi, lựa chọn đa dạng hơn và các dịch 
                     vụ tốt hơn cho người tiêu dùng.</p>
             </div>
             <div className={styles['quicklinks']}>
-                <h4>Quick Links</h4>
+                <h4>Truy cập nhanh</h4>
                 <ul>
                     <li>Trang chủ</li>
                     <li>Sản phẩm</li>
-                    <li>Liên hệ</li>
-                    <li>Chúng tôi</li>
+                    <li>Đơn hàng của tôi</li>
                 </ul>
             </div>
             <div className={styles['follow us']}>
-                <h4>Follow us</h4>
+                <h4>Liên hệ</h4>
                 <div className={styles['link-follow']}>
                     <a href="https://www.facebook.com/"><FaFacebook/></a>
                     <a href="https://www.instagram.com/"><FaInstagramSquare/></a>
