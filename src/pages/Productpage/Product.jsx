@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useContext } from "react";
 import styles from "./Product.module.css";
 import NavBar from "../../components/Navbar/Navbar";
@@ -7,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import * as ProductList from "../../services/ProductService";
 import { AuthContext } from "../../context/auth.context";
 import { useCart } from "../../context/cart.context";
+
+import iconSearch from '../../assets/iconSearch.png'
+import iconCancel from '../../assets/iconCancel.png'
 
 const Product = () => {
   const navigate = useNavigate();
@@ -19,6 +21,10 @@ const Product = () => {
   const {addToCart, cartItems} = useCart();
   const productsPerPage = 8;
 
+// add
+  const [records, setRecords] = useState([]);
+  const [searchValue, setSearchValue] = useState("")
+
   useEffect(() => {
     // Gọi hàm từ ProductService
     const fetchProducts = async () => {
@@ -26,6 +32,9 @@ const Product = () => {
         setLoading(true);
         const data = await ProductList.fetchProductData(); // Gọi hàm fetchProductData
         setProducts(data); // Cập nhật state với dữ liệu từ API
+        // add
+        setRecords(data);
+
       } catch (error) {
         console.log(error);
         setError("Failed to fetch products. Please try again later.");
@@ -37,9 +46,9 @@ const Product = () => {
     fetchProducts();
   }, []);
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(records.length / productsPerPage);
   const startIndex = (currentPage - 1) * productsPerPage;
-  const currentProducts = products.slice(
+  const currentProducts = records.slice(
     startIndex,
     startIndex + productsPerPage
   );
@@ -127,15 +136,83 @@ const Product = () => {
     return result;
   }
 
+//add
+  const Filter = (event) => {
+    const searchValue = event.target.value;
+    if (searchValue === "") {
+      setRecords(products); // Reset về toàn bộ danh sách khi không tìm kiếm
+    } else {
+      setRecords(products.filter((p) => p.name.toLowerCase().includes(event.target.value)));
+    }
+  }
+
+
+
+  const handleSearch = () => {
+    const filteredRecords = products.filter((p) =>
+      p.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  
+    if (searchValue.trim() === "" || filteredRecords.length === 0) {
+      setRecords(filteredRecords.length > 0 ? filteredRecords : []); // Cập nhật records
+      setError(filteredRecords.length === 0 ? "Không tìm thấy sản phẩm nào." : null);
+    } else {
+      setRecords(filteredRecords);
+      setError(null); // Xóa thông báo lỗi nếu tìm thấy sản phẩm
+    }
+    setCurrentPage(1); // Reset về trang đầu tiên
+  }
+  const handleClearSearch = () => {
+    setSearchValue(""); 
+    setRecords(products); 
+    setError(null); 
+    setCurrentPage(1);
+  }
+
   return (
     <div>
       <NavBar />
       <div className={styles.body}>
-        <h3>POPULAR IN SHOP</h3>
-
+        <div className={styles.headerProduct}>
+          <div className={styles.titlePage}>
+            <h3>Tất cả sản phẩm</h3>
+          </div>
+          <div className={styles.search}>
+            <input 
+            type="text" 
+            placeholder="Tìm kiếm theo tên sản phẩm..." 
+            className={styles.itemSearch}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(e) => {
+              if(e.key === "Enter"){
+                handleSearch();
+              }
+              
+            }}
+            />
+            {searchValue && (
+              <img 
+                src={iconCancel} 
+                alt="clear" 
+                className={styles.iconCancel} 
+                onClick={() => handleClearSearch()}
+              />
+            )}
+            <img 
+              src={iconSearch} 
+              alt="icon" 
+              onClick={() => handleSearch()} 
+              className={styles.iconSearch} 
+            />
+          </div>
+        </div>
+        <hr />
+        
+        
         {loading ? (
           <p>Loading products...</p>
-        ) : error ? (
+        ) : error  ? (
           <p className={styles.error}>{error}</p>
         ) : (
           <div className={styles.container}>
@@ -214,4 +291,3 @@ const Product = () => {
 };
 
 export default Product;
-

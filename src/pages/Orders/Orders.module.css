@@ -1,0 +1,177 @@
+/* OrderHistoryPage.module.css */
+.orderHistoryPage {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 100px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+  
+.tabs button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+  
+  
+
+  
+.orderList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+  
+/* .orderItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+} */
+.orderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.titleOrder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderItem hr {
+    margin-top: -5px;
+}
+  
+.orderInfo h3 {
+    margin: 0;
+    font-size: 18px;
+}
+  
+.orderInfo p {
+    margin: 5px 0;
+    color: #555;
+}
+  
+.orderDetails {
+    text-align: right;
+}
+  
+.status {
+    color: orange;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+  
+.price, .totalPrice {
+    font-size: 16px;
+    margin: 5px 0;
+}
+  
+.totalPrice {
+    color: #ff4d4f;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+.productImage {
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    padding: 5px 5px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+}
+  
+  .itemProduct {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .leftItem {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nameProduct {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+  }
+  
+  .rightItem {
+    margin-right: 10px;
+  }
+
+
+
+
+
+
+.tabOrder {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative; 
+    padding: 5px 0;
+}
+.tabOrder::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.25s ease-in-out;
+}
+.tabOrder:hover::after {
+    width: 100%; 
+}
+.tabOrderActive{
+    position: relative;
+    padding: 5px 0;
+    font-weight: 700;
+}
+
+.tabOrderActive::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 2px;
+    background-color: black;
+}

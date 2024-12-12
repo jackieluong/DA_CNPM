@@ -2,8 +2,10 @@ import  {useState} from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-import { FaSearch,FaShoppingCart, FaUser} from "react-icons/fa";
+import {FaShoppingCart, FaUser} from "react-icons/fa";
 import Logo from '../../assets/Logo.png'
+
+
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,7 +15,6 @@ const NavBar = () => {
   const handleMouseLeave = () => {
     setIsDropdownOpen(false);
   };
-  
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -30,7 +31,7 @@ const NavBar = () => {
                 isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
                 }
                 >
-                TRANG CHỦ
+                Trang chủ
                 </NavLink>
             </li>
             <li>
@@ -40,18 +41,28 @@ const NavBar = () => {
                     isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
                     }
                 >
-                    SẢN PHẨM
+                    Sản phẩm
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/account/orders"
+                    className={({ isActive }) =>
+                    isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+                    }
+                >
+                    Đơn hàng của tôi
                 </NavLink>
             </li>
         </ul>
         <div className={styles.rightSection}>
-          <input type="text" placeholder="tìm kiếm..." className={styles.searchBar}/>
-          <button className={styles.searchButton}   > <FaSearch/></button>
+          {/* <input type="text" placeholder="tìm kiếm..." className={styles.searchBar}/>
+          <button className={styles.searchButton}   > <FaSearch/></button> */}
           <div className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <span> <FaUser/></span>
+            <span className={styles.iconUser}> <FaUser/></span>
             {isDropdownOpen && (
               <div className={styles.dropdown}>
                 <NavLink
@@ -64,7 +75,7 @@ const NavBar = () => {
                   to="/account/orders"
                   className={styles.dropdownItem}
                 >
-                  Quản lý đơn hàng
+                  Lịch sử đặt hàng
                 </NavLink>
                 <NavLink
                 to="/login"

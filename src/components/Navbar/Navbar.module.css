@@ -15,7 +15,7 @@
 .navLinks {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
@@ -84,6 +84,9 @@
     border: none;
     font-size: 16px;
     cursor: pointer;
+}
+.iconUser {
+    font-size: 18px;
 }
 .icons span {
     font-size: 18px;

@@ -3,13 +3,48 @@
   max-width: 1200px; 
   margin: 0 auto;
   text-align: center;
-  
 }
+
+.headerProduct {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  display: inline-flex;
+  gap: 10px;
+}
+.itemSearch {
+  width: 400px;
+  height: 35px;
+  padding: 3px 20px 3px 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.iconCancel {
+  width: 27px;
+  height: 27px; 
+  cursor: pointer;
+  margin-top: 5px;
+}
+.iconCancel:hover {
+  filter: invert(31%) sepia(95%) saturate(7463%) hue-rotate(356deg) brightness(98%) contrast(101%);
+}
+
+.iconSearch {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  align-items: center;
   gap: 20px;
-  padding: 20px;
+  padding: 10px 10px;
 }
 @media (max-width: 640px) {
   .container {
@@ -121,3 +156,5 @@
   color: white;
   font-weight: bold;
 }
+
+

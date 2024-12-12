@@ -10,8 +10,6 @@ function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
-  const [birthday, setBirthday] = useState("");
 
   const handleSumit = async (e) => {
     e.preventDefault();
@@ -59,21 +57,6 @@ function Register() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <input
-                name="birthday"
-                type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-                
-              />
-              <select
-                name="gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              >
-                <option value="M">Nam</option>
-                <option value="F">Nữ</option>
-              </select>
               <input
                 id="password"
                 name="password"

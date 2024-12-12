@@ -1,8 +1,16 @@
+.cartPage {
+  background-color: #f0f0f0;
+}
 
-.cartContainer {
-  max-width: 1200px;
+.carContainer {
+  margin: 0 40px;
+  padding: 10px;
+}
+.cartContent {
   margin: auto;
-  padding: 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .title {
@@ -92,6 +100,7 @@
   background: #fff;
   border: 1px solid #555;
   color: #333333;
+  border-radius: 5px;
 }
 .continueButton:hover {
   color: white;
@@ -100,10 +109,12 @@
 
 .checkoutButton {
   background: #292929;
-  border: none;
+  border: 1px solid #292929;
   color: #fff;
+  border-radius: 5px;
 }
 .checkoutButton:hover {
+  border: 1px solid #464646;
   background-color: #464646;
 }
 

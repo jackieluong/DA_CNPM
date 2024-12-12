@@ -97,12 +97,13 @@ const Payment = () => {
                   <div className={styles.leftItem}>
                     <img src={item.product.imgUrl} alt={item.product.name} className={styles.productImage}/>
                     <div className={styles.nameProduct}>
-                      <span><strong>{item.product.name}</strong></span>
-                      <span>{changePrice(item.product.price)}đ</span>
+                      <span className={styles.name}><strong>{item.product.name}</strong></span>
+                      <span>Số lượng: {item.quantity}</span>
                     </div>
                   </div>
                   <div className={styles.rightItem}>
-                    <span>x {item.quantity}</span>
+                    
+                    <span>{changePrice(item.product.price)}đ</span>
                   </div>
                 </div>   
               ))} 

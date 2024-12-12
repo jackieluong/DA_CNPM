@@ -33,11 +33,11 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const data = await ProductList.fetchProductDetail(id); // Gọi API với ID
+        const data = await ProductList.fetchProductDetail(id);
         setProduct(data);
       } catch (err) {
         console.error(err);
-        setError('Không thể tải thông tin sản phẩm. Vui lòng thử lại sau.');
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -60,15 +60,18 @@ const ProductDetails = () => {
     }
     return result;
   }
-  
 
+  // console.log(product)
   return (
     <div>
       <NavBar />
       {loading ? (
         <p>Đang tải dữ liệu sản phẩm...</p>
       ) : error ? (
-        <p>{error}</p>
+        <div className={styles.errorContainer}>
+          <p className={styles.errorMessage}>{error}</p>
+          <button onClick={() => setError(null)}>Thử lại</button>
+        </div>
       ) : (
         <div className={styles.productContainer}>
           <div className={styles.productInfo}>

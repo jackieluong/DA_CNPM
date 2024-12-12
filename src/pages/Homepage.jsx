@@ -1,6 +1,8 @@
 
 import NavBar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import HomepageBody from '../components/HomepageBody/HomepageBody';
+import InfoForShop from '../components/HomepageBody/InfoForShop';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 
@@ -15,7 +17,8 @@ function Homepage() {
             <div>
                 <NavBar/>
             </div>
-            Homepage 
+            <HomepageBody/>
+            <InfoForShop/>
             <div>
                 <Footer/>
             </div>

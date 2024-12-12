@@ -152,6 +152,13 @@
   flex-direction: column;
 }
 
+.name {
+  width: 170px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
 .rightItem {
   margin-right: 10px;
 }
