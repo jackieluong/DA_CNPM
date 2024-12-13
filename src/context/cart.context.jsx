@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
       fetchCartItems();
     }
    
-  },[])
+  },[auth.isAuthenticated])
   const addToCart = async (product, quantity = 1) => {
     
     const existingItem = cartItems.find(

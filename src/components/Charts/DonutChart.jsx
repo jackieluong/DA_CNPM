@@ -3,6 +3,11 @@ import Chart from "react-apexcharts";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 const DonutChart = ({data}) => {
+
+  
+  // console.log(data);
+
+  if(data.length === 0) return <div>Loading...</div>;
   const labels = data.map(item => item.brand); // Extract brand names for labels
   const series = data.map(item => parseFloat(item.revenue)); // Extract revenue values and convert to numbers
   // Chart data and configuration
