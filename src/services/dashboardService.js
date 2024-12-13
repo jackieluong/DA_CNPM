@@ -132,7 +132,7 @@ export const fetchTopProducts = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch top products");
         }
-       //
+       
         return response.data.data;
     } catch (error) {
         console.error("Error fetching top products:", error);

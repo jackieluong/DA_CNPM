@@ -8,7 +8,8 @@ import { AuthContext } from '../context/auth.context';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { fetchTopProducts } from '../services/DashboardService';
+// import { fetchTopProducts } from '../services/DashboardService';
+import {fetchTopProducts} from "../services/DashboardService";
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
