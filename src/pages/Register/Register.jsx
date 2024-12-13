@@ -16,12 +16,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await handleRegister(
-        email,
-        password,
-        name,
-        
-      );
+      const response = await handleRegister(email, password, name);
       console.log(response);
       alert(response.message);
       navigate("/login");
