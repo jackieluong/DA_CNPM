@@ -5,9 +5,17 @@ import { FaRegUser } from "react-icons/fa";
 import PieChart from "../../components/Charts/PieChart";
 import DonutChart from "../../components/Charts/DonutChart";
 import { _, Grid } from "gridjs-react";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { formatCurrency } from "../../utils/formatCurrency";
-import { fetchTotalRevenue, fetchTotalOrders, fetchTotalOrderDelivered, fetchTotalOrderShipping, fetchRevenueByCategory, fetchRevenueByBrand, fetchTopProducts} from "../../services/DashboardService";
+import {
+  fetchTotalRevenue,
+  fetchTotalOrders,
+  fetchTotalOrderDelivered,
+  fetchTotalOrderShipping,
+  fetchRevenueByCategory,
+  fetchRevenueByBrand,
+  fetchTopProducts,
+} from "../../services/dashboardService";
 function Dashboard() {
   // const totalRevenue = 5500;
   const [loading, setLoading] = useState(false);
@@ -19,10 +27,9 @@ function Dashboard() {
   const [revenueByCategory, setRevenueByCategory] = useState([]);
   const [revenueByBrand, setRevenueByBrand] = useState([]);
   const [topProducts, setTopProducts] = useState([]);
- 
 
-  const [startDate, setStartDate] = useState('2024-01-01');
-  const [endDate, setEndDate] = useState('2024-12-31');
+  const [startDate, setStartDate] = useState("2024-01-01");
+  const [endDate, setEndDate] = useState("2024-12-31");
 
   const fetchData = async () => {
     setLoading(true);
@@ -41,85 +48,95 @@ function Dashboard() {
       setRevenueByBrand(response6);
       const response7 = await fetchTopProducts(startDate, endDate);
       setTopProducts(response7);
-
     } catch (error) {
       console.error("Error fetching data:", error);
-    }finally {
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-
     fetchData();
-  },[]);
+  }, []);
 
   function handleFilter() {
     fetchData();
   }
 
-  if(loading) {
+  if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       </div>
-    )
+    );
   }
   return (
     <PageLayout pageTitle="Dashboard">
       {/* <div className="row mb-3">Good morning </div> */}
 
-      
-      <div className="card mb-5 px-3 py-3 text-white" style={{ background: 'linear-gradient(to right, #3b82f6, #1d4ed8)' }}>
-          <div className="card-body">
+      <div
+        className="card mb-5 px-3 py-3 text-white"
+        style={{ background: "linear-gradient(to right, #3b82f6, #1d4ed8)" }}
+      >
+        <div className="card-body">
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="flex-grow-1">
                 <h5 className="card-title mb-2">Good Morning, Admin</h5>
               </div>
-              </div>
-              <div className="col-lg-6">
-  <div className="row g-2 me-3">
-    <div className=" col-md-4">
-      <label className="form-label">Start Date</label>
-      <input
-        type="date"
-        className="form-control"
-        onChange={(e) => setStartDate(e.target.value)}
-        value={startDate}
-      />
-    </div>
-    <div className=" col-md-4">
-    <label className="form-label">End Date</label>
-      <input
-        type="date"
-        className="form-control"
-        onChange={(e) => setEndDate(e.target.value)}
-        value={endDate}
-      />
-    </div>
-    <div className="col-md-4 text-center" style={{paddingTop:"30px"}}>
-      <button className="btn btn-success w-75" onClick={handleFilter}>Filter</button>
-    </div>
-    {/* <div className="col-md-3 text-center" style={{paddingTop:"30px"}}>
+            </div>
+            <div className="col-lg-6">
+              <div className="row g-2 me-3">
+                <div className=" col-md-4">
+                  <label className="form-label">Start Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    onChange={(e) => setStartDate(e.target.value)}
+                    value={startDate}
+                  />
+                </div>
+                <div className=" col-md-4">
+                  <label className="form-label">End Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    onChange={(e) => setEndDate(e.target.value)}
+                    value={endDate}
+                  />
+                </div>
+                <div
+                  className="col-md-4 text-center"
+                  style={{ paddingTop: "30px" }}
+                >
+                  <button
+                    className="btn btn-success w-75"
+                    onClick={handleFilter}
+                  >
+                    Filter
+                  </button>
+                </div>
+                {/* <div className="col-md-3 text-center" style={{paddingTop:"30px"}}>
       <button className="btn btn-secondary w-75">Reset</button>
     </div> */}
-  </div>
-</div>
+              </div>
+            </div>
           </div>
-          </div>        
+        </div>
       </div>
       <div className="row">
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate" style={{height: "150px"}}>
+          <div className="card card-animate" style={{ height: "150px" }}>
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">
                 Total Revenue{" "}
               </p>
               <div className="d-flex justify-content-between">
-                <h4 className="fw-semibold mb-0">{formatCurrency(totalRevenue)} </h4>
+                <h4 className="fw-semibold mb-0">
+                  {formatCurrency(totalRevenue)}{" "}
+                </h4>
                 <span className="bg-primary-subtle fs-13 rounded p-2">
                   <AiOutlineDollar size={20} />
                 </span>
@@ -128,9 +145,11 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate"style={{height: "150px"}} >
+          <div className="card card-animate" style={{ height: "150px" }}>
             <div className="card-body">
-              <p className="text-uppercase fw-medium text-muted ">Total Orders</p>
+              <p className="text-uppercase fw-medium text-muted ">
+                Total Orders
+              </p>
               <div className="d-flex justify-content-between">
                 <h4 className="fw-semibold mb-0">{totalOrders}</h4>
                 <span className="bg-success-subtle fs-13 rounded p-2">
@@ -141,10 +160,10 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate"style={{height: "150px"}} >
+          <div className="card card-animate" style={{ height: "150px" }}>
             <div className="card-body">
               <p className="text-uppercase fw-medium text-muted ">
-               Orders Completed
+                Orders Completed
               </p>
               <div className="d-flex justify-content-between">
                 <h4 className="fw-semibold mb-0">{totalOrderCompleted}</h4>
@@ -156,9 +175,11 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-xl-3 col-md-6">
-          <div className="card card-animate" style={{height: "150px"}}>
+          <div className="card card-animate" style={{ height: "150px" }}>
             <div className="card-body">
-              <p className="text-uppercase fw-medium text-muted ">Orders Shipping</p>
+              <p className="text-uppercase fw-medium text-muted ">
+                Orders Shipping
+              </p>
               <div className="d-flex justify-content-between">
                 <h4 className="fw-semibold mb-0">{totalOrderShipping}</h4>
                 <span className="bg-warning-subtle fs-13 rounded p-2">
@@ -185,10 +206,10 @@ function Dashboard() {
         <div className="card-body p-5">
           <div className="row justify-content-evenly">
             <div className="col-lg-6 d-flex justify-content-center">
-              <PieChart data={ revenueByCategory } />
+              <PieChart data={revenueByCategory} />
             </div>
             <div className="col-lg-6 d-flex justify-content-center">
-              <DonutChart data = {revenueByBrand}/>
+              <DonutChart data={revenueByBrand} />
             </div>
           </div>
         </div>
@@ -223,44 +244,41 @@ function Dashboard() {
               </tbody>
             </table>
           </div> */}
-                <Grid
-        data={topProducts.map((product) => [
-          product.product_id,
-          _(
-            <div className="d-flex gap-2">
-              <img
-                src={product.imgUrl}
-                
-                style={{ width: "60px", height: "60px", marginLeft: '-24px' }}
-              />
-              <div className="d-flex align-items-center"> {product.name} </div>
-            </div>
-          ),
-          formatCurrency(product.price),
-          product.total_quantity,
-          formatCurrency(product.total_quantity * product.price),
-         
-
-        ])}
-        columns={[
-          "ID",
-          "Product Name",
-          "Price",
-          "Sales",
-          "Revenue",
-          
-        ]}
-        search={true}
-        sort={true}
-        fixedHeader={true}
-        pagination={{
-          enabled: true,
-          limit: 5,
-        }}
-        style={{
-          border: "none",
-        }}
-      />
+          <Grid
+            data={topProducts.map((product) => [
+              product.product_id,
+              _(
+                <div className="d-flex gap-2">
+                  <img
+                    src={product.imgUrl}
+                    style={{
+                      width: "60px",
+                      height: "60px",
+                      marginLeft: "-24px",
+                    }}
+                  />
+                  <div className="d-flex align-items-center">
+                    {" "}
+                    {product.name}{" "}
+                  </div>
+                </div>
+              ),
+              formatCurrency(product.price),
+              product.total_quantity,
+              formatCurrency(product.total_quantity * product.price),
+            ])}
+            columns={["ID", "Product Name", "Price", "Sales", "Revenue"]}
+            search={true}
+            sort={true}
+            fixedHeader={true}
+            pagination={{
+              enabled: true,
+              limit: 5,
+            }}
+            style={{
+              border: "none",
+            }}
+          />
         </div>
       </div>
     </PageLayout>
