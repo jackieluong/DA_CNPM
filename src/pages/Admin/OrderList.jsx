@@ -3,14 +3,14 @@ import PageLayout from "../../Layouts/PageLayout";
 import { useEffect, useState } from "react";
 import TextInput from "../../components/FormInput/TextInput";
 import SelectInput from "../../components/FormInput/SelectInput";
-import { paymentOptions, statusOptions } from "../../utils/selectOptions";
+import { paymentOptions, paymentStatusOptions, statusOptions } from "../../utils/selectOptions";
 
 // const initialFilter = {};
 function OrderList({ orderData, setOrderData }) {
   const [filteredOrderData, setFilteredOrderData] = useState(orderData);
   const [filters, setFilters] = useState({
     status: "",
-    paymentMethod: "",
+    paymentStatus: "",
     startDate: "",
     endDate: "",
   });
@@ -30,8 +30,8 @@ function OrderList({ orderData, setOrderData }) {
       let matchedStatus = filters.status
         ? order.status == filters.status
         : true;
-      let matchedPayment = filters.paymentMethod
-        ? order.payment_method == filters.paymentMethod
+      let matchedPayment = filters.paymentStatus
+        ? order.payment_status == filters.paymentStatus
         : true;
 
       // Normalize the order's date (set the time to 00:00:00)
@@ -49,15 +49,15 @@ function OrderList({ orderData, setOrderData }) {
         matchedStatus && matchedPayment && matchedStartDate && matchedEndDate
       );
     });
-    console.log("filteredData: ", filteredData);
-    console.log("orderData: ", orderData);
+    
+    
     setFilteredOrderData(filteredData);
   }
 
   function resetFilter() {
     setFilters({
       status: "",
-      paymentMethod: "",
+      paymentStatus: "",
       startDate: "",
       endDate: "",
     });
@@ -100,10 +100,10 @@ function OrderList({ orderData, setOrderData }) {
               />
               <SelectInput
                 className="col-sm-6"
-                label="Payment"
-                name="paymentMethod"
-                options={paymentOptions}
-                value={filters.paymentMethod}
+                label="Payment Status"
+                name="paymentStatus"
+                options={paymentStatusOptions}
+                value={filters.paymentStatus}
                 handleChange={handleFilterChange}
               />
             </div>

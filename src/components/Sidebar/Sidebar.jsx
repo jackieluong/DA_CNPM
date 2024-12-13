@@ -7,7 +7,7 @@ function Sidebar({showSideBar}) {
     // <div className="sidebar">
     <div className={`sidebar ${showSideBar ? '' : 'collapsed'}`}>
         
-        <h1 className="sidebar-label mt-3 mb-4">Admin</h1>
+        <h3 className="sidebar-label mt-3 mb-4">Admin</h3>
       {SidebarData.map((item, index) => (
         <SidebarItem key={index} item={item} showSideBar={showSideBar} />
       ))}
