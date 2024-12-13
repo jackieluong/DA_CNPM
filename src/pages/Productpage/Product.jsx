@@ -59,7 +59,7 @@ const Product = () => {
 
   function handleClickAdd(product) {
     if(!auth.isAuthenticated){
-      alert("Bạn cần phải đăng nhập để thực hiện chúc năng này");
+      alert("Bạn cần phải đăng nhập để thêm sản phẩm vào giỏ hàng");
     }else{
       addToCart(product);
       alert("Thêm vào giỏ hàng thành công");
@@ -178,33 +178,34 @@ const Product = () => {
             <h3>Tất cả sản phẩm</h3>
           </div>
           <div className={styles.search}>
-            <input 
-            type="text" 
-            placeholder="Tìm kiếm theo tên sản phẩm..." 
-            className={styles.itemSearch}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={(e) => {
-              if(e.key === "Enter"){
-                handleSearch();
-              }
-              
-            }}
-            />
-            {searchValue && (
+            <div className={styles.searchWrapper}>
               <img 
-                src={iconCancel} 
-                alt="clear" 
-                className={styles.iconCancel} 
-                onClick={() => handleClearSearch()}
+                src={iconSearch} 
+                alt="icon" 
+                className={styles.iconSearch} 
+                onClick={() => handleSearch()} 
               />
-            )}
-            <img 
-              src={iconSearch} 
-              alt="icon" 
-              onClick={() => handleSearch()} 
-              className={styles.iconSearch} 
-            />
+              <input 
+                type="text" 
+                placeholder="Tìm kiếm theo tên sản phẩm..." 
+                className={styles.itemSearch}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if(e.key === "Enter"){
+                    handleSearch();
+                  }
+                }}
+              />
+              {searchValue && (
+                <img 
+                  src={iconCancel} 
+                  alt="clear" 
+                  className={styles.iconCancel} 
+                  onClick={() => handleClearSearch()}
+                />
+              )}
+            </div>
           </div>
         </div>
         <hr />
