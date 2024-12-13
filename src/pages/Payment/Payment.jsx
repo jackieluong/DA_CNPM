@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Payment.module.css";
 import { useCart } from '../../context/cart.context';
 import NavBar from '../../components/Navbar/Navbar';
+import { use } from "react";
+import { createOrderService } from "../../services/OrderService";
+import { useNavigate } from "react-router-dom";
 
-const DeliveryInformation = () => (
+const DeliveryInformation = ({value, onChange}) => (
+  
   <div className={styles.deliveryInfo}>
     <h5>Thông tin mua hàng</h5>
     <form className={styles.form}>
@@ -27,7 +31,7 @@ const DeliveryInformation = () => (
       <div className={styles.row}>
         <div className={styles.inputContainer}>
           <h6>Địa chỉ</h6>
-          <input type="text" placeholder="Địa chỉ" className={styles.input} />
+          <input value={value} onChange={(e) => onChange(e.target.value)} type="text" placeholder="Địa chỉ" className={styles.input} required/>
         </div>
       </div>
     </form>
@@ -41,15 +45,16 @@ const ScheduleDelivery = () => (
   </div>
 );
 
-const PaymentMethod = () => (
+const PaymentMethod = ({value, onChange }) => (
+
   <div className={styles.paymentMethod}>
     <h5>Thanh toán</h5>
     <div className={styles.paymentOptions}>
       <label>
-        <input type="radio" name="payment" /> Chuyển khoản qua ngân hàng
+        <input value={'Chuyển khoản'} type="radio" name="payment" onChange={(e)=> onChange(e.target.value)}/> Chuyển khoản qua ngân hàng
       </label>
       <label>
-        <input type="radio" name="payment" defaultChecked /> Thanh toán khi nhận hàng
+        <input value={'Thanh toán khi nhân hàng'} type="radio" name="payment" defaultChecked onChange={(e)=> onChange(e.target.value)}/> Thanh toán khi nhận hàng
       </label>
     </div>
   </div>
@@ -60,8 +65,13 @@ const Payment = () => {
   const {cartItems, getTotalPrice, getTotalItems} = useCart();
   const subTotal = getTotalPrice();
   const totalItems = getTotalItems();
-  const ship_fee = 50000;
+  
+  const navigate = useNavigate();
+  const [address, setAddress] = useState('');
+  const [shipFee, setShipFee] = useState(20000 );
+  const [paymentMethod, setPaymentMethod] = useState('Thanh toán khi nhân hàng');
 
+  console.log("Address", address, "Payment method: ", paymentMethod, "Ship fee: ", shipFee);
   function changePrice(price) {
     let str = price + "";
     let result = "";
@@ -78,14 +88,27 @@ const Payment = () => {
     return result;
   }
 
+  async function createOrder(){
+    try {
+      
+      const response = await createOrderService(address, shipFee, paymentMethod, cartItems);
+      
+      alert("Tạo đơn hàng thành công");
+      navigate('/checkout', { state: { success: true } });
+    } catch (error) {
+      console.log(error);
+      alert("Tạo đơn hàng khóa");
+    }
+  }
+
   return (
     <div>
       <NavBar/>
       <div className={styles.container}>
         <div className={styles.leftColumn}>
-          <DeliveryInformation />
+          <DeliveryInformation value={address} onChange={setAddress} />
           <ScheduleDelivery />
-          <PaymentMethod />
+          <PaymentMethod value={paymentMethod} onChange={ setPaymentMethod} />
         </div>
         
         <div className={styles.orderSummary}>
@@ -116,14 +139,14 @@ const Payment = () => {
               </div>
               <div>
                 <span>Phí vận chuyển:</span>
-                <span>{ship_fee.toLocaleString()}đ</span>
+                <span>{shipFee.toLocaleString()}đ</span>
               </div>
               <div>
                 <span><strong>Tổng cộng:</strong></span>
-                <span><strong>{(subTotal + ship_fee).toLocaleString()}đ</strong></span>
+                <span><strong>{(subTotal + shipFee).toLocaleString()}đ</strong></span>
               </div>
             </div>
-            <button className={styles.confirmButton}>Đặt hàng</button>
+            <button onClick={createOrder} className={styles.confirmButton}>Đặt hàng</button>
           </div>
         </div>
       </div>

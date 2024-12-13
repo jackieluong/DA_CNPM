@@ -3,15 +3,21 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { IoMoonOutline } from "react-icons/io5";
 import TopBarItem from "./TopBarItem";
 import { useState } from "react";
+import { useAuth } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom";
 function TopBar({ showSideBar, setShowSideBar }) {
+  const {logout} = useAuth();
   const [dropDown, setDropDown] = useState(false);
   function handleToggleSideBar() {
     setShowSideBar((showSideBar) => !showSideBar);
     console.log("render");
   }
 
+  const navigate = useNavigate();
   function handleLogOut() {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    logout();
+    navigate("/");
   }
   return (
     <div className="topbar">

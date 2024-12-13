@@ -1,16 +1,18 @@
 import  {useState} from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 // import { FaUser} from "react-icons/fa";
 import Logo from '../../assets/Logo.png'
 import iconCart from '../../assets/iconCart.png'
 import iconUser from '../../assets/iconUser.png'
+import { useAuth } from "../../context/auth.context";
 
 
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const {auth, logout} = useAuth();
   const handleMouseEnter = () => {
     setIsDropdownOpen(true);
   };
@@ -46,6 +48,7 @@ const NavBar = () => {
                     Sản phẩm
                 </NavLink>
             </li>
+            {auth.isAuthenticated ?
             <li>
                 <NavLink
                     to="/account/orders"
@@ -56,9 +59,22 @@ const NavBar = () => {
                     Đơn hàng của tôi
                 </NavLink>
             </li>
+            :
+            <li>
+                <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                    isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+                    }
+                >
+                    Đăng nhập
+                </NavLink>
+            </li>
+            }
         </ul>
         
         <div className={styles.rightSection}>
+          {auth.isAuthenticated && 
           <div className={styles.icons}>
               <span><NavLink to="/cart"
                         className={({ isActive }) =>
@@ -72,6 +88,7 @@ const NavBar = () => {
                     </NavLink>
               </span>
           </div>
+          }
           <div className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -79,19 +96,9 @@ const NavBar = () => {
             <span className={styles.iconUser}> <img src={iconUser} alt="icon" /></span>
             {isDropdownOpen && (
               <div className={styles.dropdown}>
-                <NavLink
-                  to="/account"
-                  className={styles.dropdownItem}
-                >
-                  Thông tin tài khoản
-                </NavLink>
-                <NavLink
-                  to="/account/orders"
-                  className={styles.dropdownItem}
-                >
-                  Đơn hàng của tôi
-                </NavLink>
-                <NavLink
+                
+              {
+                !auth.isAuthenticated ? (<Link
                 to="/login"
                 >
                   <button
@@ -100,8 +107,36 @@ const NavBar = () => {
                   >
                   Đăng nhập
                   </button>
-                </NavLink>
-              </div>
+                </Link> ) :(
+                  <>
+                
+                <NavLink
+                to="/account"
+                className={styles.dropdownItem}
+              >
+                Thông tin tài khoản
+              </NavLink>
+              <NavLink
+                to="/account/orders"
+                className={styles.dropdownItem}
+              >
+                Lịch sử đặt hàng
+              </NavLink>  
+              <NavLink
+                to="/"
+                >
+                  <button
+                  className={styles.logoutButton}
+                  onClick={() => logout()}
+                  >
+                  Đăng xuất
+                  </button>
+                </NavLink> 
+              </>
+              )
+              }
+              
+            </div>
             )}
           </div>
           

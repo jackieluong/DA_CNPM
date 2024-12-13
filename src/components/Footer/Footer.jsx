@@ -7,11 +7,13 @@ export default function Footer() {
   return (
     <footer className={styles['footer']}>
         <div className={styles['footer-content']}>
-            <div className={styles['info-shop']}>
+            <div className={styles['quicklinks']} style={{display: 'flex', flexFlow: 'column', justifyContent: 'center'}}>
                 <h4>Technology-Shop</h4>
-                <p>Technology-shop là gian hàng trực tuyến (mua hàng online). 
-                    Với mong muốn mang lại sự tiện lợi, lựa chọn đa dạng hơn và các dịch 
-                    vụ tốt hơn cho người tiêu dùng.</p>
+                <ul>
+                    <li>Giới thiệu</li>
+                    <li>Tuyển dụng</li>
+                    <li>Chính sách</li>
+                </ul>
             </div>
             <div className={styles['quicklinks']}>
                 <h4>Truy cập nhanh</h4>

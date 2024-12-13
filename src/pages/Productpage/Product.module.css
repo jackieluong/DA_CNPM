@@ -78,12 +78,14 @@
   padding: 16px;
   text-align: center;
   background-color: #fff;
-  transition: box-shadow 0.3s ease;
+  
 }
 
 .productCard:hover {
   box-shadow: 2px 8px 12px rgba(0, 0, 0, 0.1);
-  ;
+  scale: 1.05;
+  /* transform: transform 0.3s ease; */
+  transition: box-shadow 0.3s ease;
 }
 
 .image {

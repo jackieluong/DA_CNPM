@@ -1,6 +1,6 @@
 import iconGoogle from "../../assets/google.png";
 import iconLogin from "../../assets/login.png";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import { useState } from "react";
 import { handleRegister } from "../../services/userService";
@@ -11,6 +11,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
 
+  const navigate = useNavigate();
   const handleSumit = async (e) => {
     e.preventDefault();
 
@@ -19,11 +20,11 @@ function Register() {
         email,
         password,
         name,
-        birthday,
-        gender
+        
       );
       console.log(response);
       alert(response.message);
+      navigate("/login");
     } catch (error) {
       console.log(error);
       alert(error.response.data.message);

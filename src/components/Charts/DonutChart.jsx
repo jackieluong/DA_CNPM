@@ -35,7 +35,7 @@ const DonutChart = ({data}) => {
 
   return (
     <div>
-      <Chart options={options} series={series} type="donut" width="380" />
+      <Chart options={options} series={series} type="donut" width="390" />
     </div>
   );
 };

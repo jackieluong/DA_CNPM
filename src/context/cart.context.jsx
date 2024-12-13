@@ -1,18 +1,23 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { addToCartService, getCartItems, removeFromCartService, updateQuantityService } from "../services/cartService";
+import { useAuth } from "./auth.context";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  const {auth} = useAuth();
   useEffect(() => {
 
     const fetchCartItems = async() =>{
         const data = await getCartItems();
         setCartItems(data);
     }
-    fetchCartItems();
+    if(auth.isAuthenticated){
+      fetchCartItems();
+    }
+   
   },[])
   const addToCart = async (product, quantity = 1) => {
     

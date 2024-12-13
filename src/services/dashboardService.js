@@ -13,7 +13,7 @@ export const fetchTotalRevenue = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total revenue");
         }
-        console.log(response);
+       //
         return response.data.data.total_revenue;
     } catch (error) {
         console.error("Error fetching total revenue:", error);
@@ -33,7 +33,7 @@ export const fetchTotalOrders = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total revenue");
         }
-        console.log(response);
+       //
         return response.data.data.total_orders;
     } catch (error) {
         console.error("Error fetching total revenue:", error);
@@ -54,7 +54,7 @@ export const fetchTotalOrderDelivered = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total orders delivered");
         }
-        console.log(response);
+       //
         return response.data.data.total_orders_delivered;
     } catch (error) {
         console.error("Error fetching total orders delivered:", error);
@@ -75,7 +75,7 @@ export const fetchTotalOrderShipping = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total orders shipping");
         }
-        console.log(response);
+       //
         return response.data.data.total_orders_shipping;
     } catch (error) {
         console.error("Error fetching total orders shipping:", error);
@@ -94,7 +94,7 @@ export const fetchRevenueByCategory = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total revenue");
         }
-        console.log(response);
+       //
         return response.data.data;
     } catch (error) {
         console.error("Error fetching total revenue:", error);
@@ -113,7 +113,7 @@ export const fetchRevenueByBrand = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch total revenue by brand");
         }
-        console.log(response);
+       //
         return response.data.data;
     } catch (error) {
         console.error("Error fetching total revenue by brand:", error);
@@ -132,7 +132,7 @@ export const fetchTopProducts = async (startDate, endDate) => {
         if(response.status !== 200) {
             throw new Error("Failed to fetch top products");
         }
-        console.log(response);
+       //
         return response.data.data;
     } catch (error) {
         console.error("Error fetching top products:", error);

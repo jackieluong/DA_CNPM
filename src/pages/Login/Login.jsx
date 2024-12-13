@@ -5,13 +5,14 @@ import iconLogin from "../../assets/Login.png";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { handleLogin } from "../../services/userService";
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext, useAuth } from "../../context/auth.context";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { auth, setAuth } = useContext(AuthContext);
+  // const { auth, setAuth } = useContext(AuthContext);
+  const {login, auth} = useAuth();
 
   const navigate = useNavigate();
 
@@ -19,20 +20,13 @@ function Login() {
     e.preventDefault();
     console.log("email: ", email, "password: ", password);
     try {
-      const response = await handleLogin(email, password);
-
-      localStorage.setItem("accessToken", response.accessToken);
-
-      setAuth({
-        isAuthenticated: true,
-        user: {
-          id: response.user.id,
-          email: response.user.email,
-        },
-      });
+      await login(email, password);
+      if(auth.user.role === 'customer'){
+        navigate("/");
+      }else if(auth.user.role === 'manager'){
+        navigate("/admin");
+      }
       
-      alert(response.message);
-      navigate("/");
     } catch (error) {
       console.log(error);
     }

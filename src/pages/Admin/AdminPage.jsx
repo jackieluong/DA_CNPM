@@ -79,6 +79,7 @@ function AdminPage() {
   return (
     <AdminLayout>
       <Routes>
+        <Route index element={<Dashboard />} />
         <Route path="dashboard" index element={<Dashboard />} />
         <Route path="products">
           <Route

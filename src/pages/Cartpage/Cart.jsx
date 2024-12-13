@@ -105,7 +105,7 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
 
   const {cartItems, incQuantity, decQuantity,getTotalPrice, removeFromCart } = useCart();
-  console.log("Cart Items: ", cartItems);
+  
   const subtotal = getTotalPrice();
   const navigate = useNavigate();
   

@@ -39,3 +39,40 @@ export const handleRegister = async (email, password, name, birthday, gender) =>
     throw error;
   }
 }
+
+export const getUserAccount = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+  try {
+    const response = await axios.get(`${apiURL}/user/account`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    console.log(response);
+    return response.data.data[0];
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export const updateUserAccount = async (name, email, birthday, gender) => {
+  const accessToken = localStorage.getItem("accessToken");
+  try {
+    const response = await axios.put(`${apiURL}/user/account`, {
+      name,
+      email,
+      birthday,
+      gender,
+    }, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

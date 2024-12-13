@@ -182,12 +182,12 @@ function Dashboard() {
         <div className="card-header d-flex align-items-center ">
           <h5 className="card-title flex-grow-1 text-muted mb-0">Sales</h5>
         </div>
-        <div className="card-body">
-          <div className="row">
-            <div className="col-lg-6">
+        <div className="card-body p-5">
+          <div className="row justify-content-evenly">
+            <div className="col-lg-6 d-flex justify-content-center">
               <PieChart data={ revenueByCategory } />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-center">
               <DonutChart data = {revenueByBrand}/>
             </div>
           </div>

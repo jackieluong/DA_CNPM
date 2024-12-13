@@ -11,6 +11,7 @@ import Cart from './pages/Cartpage/Cart'
 
 import Payment from './pages/Payment/Payment'
 import AdminPage from './pages/Admin/AdminPage'
+import Checkout from './pages/Checkout/Checkout'
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
     {
         path: '/payment',
         element: <Payment/>
+    },
+    {
+        path: '/checkout',
+        element: <Checkout />
     },
     {
         path: '/admin/*',

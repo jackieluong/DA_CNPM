@@ -42,3 +42,35 @@ export const getOrderDetails = async(id) => {
     throw error;
   }
 }
+
+export const createOrderService = async(address, ship_fee, payment_method, products) => {
+  const accessToken = localStorage.getItem("accessToken");
+  try {
+    const response = await axios.post(`${apiURL}/create`, {address, ship_fee, payment_method, products},{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    });
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export const getUserOrders = async() => {
+  const accessToken = localStorage.getItem("accessToken");
+  try {
+    const response = await axios.get(`${apiURL}/user`,{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    });
+    console.log(response);
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
