@@ -82,12 +82,15 @@ const ProductDetails = () => {
                 alt={product.name}
               />
               <div className={styles.details}>
-                <h1 className={styles.productName}>{product.name}</h1>
+                <h1 className={styles.productName}><strong>{product.name}</strong></h1>
                 <p className={styles.productBrand}>
                   Thương hiệu: <strong>{product.brand}</strong>
                 </p>
                 <p className={styles.productType}>
                   Loại: <strong>{product.category}</strong>
+                </p>
+                <p className={styles.productQuantity}>
+                  Kho: <strong>{product.quantity}</strong>
                 </p>
                 <p className={styles.productPrice}>
                   Giá: <strong>{product.price.toLocaleString()}đ</strong>

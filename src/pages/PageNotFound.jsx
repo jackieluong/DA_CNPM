@@ -1,7 +1,7 @@
 function PageNotFound() {
     return (
         <div>
-            Page Not Found
+            Trang không tồn tại, vui lòng thử lại sau!
         </div>
     )
 }

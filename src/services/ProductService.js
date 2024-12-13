@@ -25,7 +25,7 @@ export const fetchProductDetail = async (id) => {
     if (response.status !== 200) {
       throw new Error(`Failed to fetch product data. Status: ${response.status}`);
     }
-    
+    console.log(response);
     return response.data.data;
   } catch (error) {
     console.error("Error fetching data:", error.message);

@@ -47,7 +47,11 @@
   color: #353535;
   margin-bottom: 10px;
 }
-
+.productQuantity {
+  font-size: 18px;
+  color: #353535;
+  margin-bottom: 10px;
+}
 .productPrice {
   font-size: 20px;
   color: #353535;

@@ -9,35 +9,43 @@
   display: flex;
   justify-content: space-between;
 }
-
-.search {
-  display: inline-flex;
-  gap: 10px;
-}
-.itemSearch {
+.searchWrapper {
+  position: relative;
   width: 400px;
+}
+
+.itemSearch {
+  width: 100%;
   height: 35px;
-  padding: 3px 20px 3px 5px;
+  padding: 0 40px; /* Dành không gian cho các icon */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.iconCancel {
-  width: 27px;
-  height: 27px; 
+.iconSearch {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  margin-top: 5px;
 }
+
+.iconCancel {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .iconCancel:hover {
   filter: invert(31%) sepia(95%) saturate(7463%) hue-rotate(356deg) brightness(98%) contrast(101%);
 }
 
-.iconSearch {
-  width: 27px;
-  height: 27px;
-  cursor: pointer;
-  margin-top: 5px;
-}
 
 .container {
   display: grid;
