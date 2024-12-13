@@ -1,5 +1,5 @@
 import iconGoogle from "../../assets/google.png";
-import iconLogin from "../../assets/login.png";
+import iconLogin from "../../assets/Login.png";
 import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import { useState } from "react";
