@@ -1,85 +1,23 @@
-
 import { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
-import icon from '../../assets/mac1.jpg';
 import { getUserOrders } from "../../services/OrderService";
-import { getStatusBadge } from "../../utils/getStatusBadge";
+import { getStatusBadge, getStatusBadgeClient } from "../../utils/getStatusBadge";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-// const ordersData = [
-//   {
-//     id: 7,
-//     products: [
-//       {
-//         productName: "Galaxy S23 Ultra",
-//         category: "Điện thoại",
-//         quantity: 1,
-//         price: 15000000,
-//         product_id: 10,
-//       },
-//       {
-//         productName: "Galaxy S23 Ultra",
-//         category: "Điện thoại",
-//         quantity: 1,
-//         price: 15000000,
-//         product_id: 13,
-//       },
-//     ],
-//     status: "Chờ xác nhận",
-//   },
-//   {
-//     id: 8,
-//     products: [
-//       {
-//         productName: "HP Envy 34 All-in-One",
-//         category: "PC",
-//         quantity: 2,
-//         price: 98000000,
-//         product_id: 11,
-//       },
-//     ],
-//     status: "Vận chuyển",
-//   },
-//   {
-//     id: 9,
-//     products: [
-//       {
-//         productName: "HP Envy 34 All-in-One",
-//         category: "PC",
-//         quantity: 2,
-//         price: 98000000,
-//         product_id: 11,
-//       },
-//     ],
-//     status: "Hoàn thành",
-//   },
-//   {
-//     id: 10,
-//     products: [
-//       {
-//         productName: "HP Envy 34 All-in-One",
-//         category: "PC",
-//         quantity: 2,
-//         price: 98000000,
-//         product_id: 11,
-//       },
-//     ],
-//     status: "Đã hủy",
-//   },
-// ];
+
 
 const getStatusClass = (status) => {
   switch (status) {
-    case "Chờ xác nhận":
+    case "Processing":
       return styles.pending;
-    case "Vận chuyển":
+    case "Shipping":
       return styles.shipping;
-    case "Hoàn thành":
+    case "Delivered":
       return styles.completed;
-    case "Đã hủy":
+    case "Cancelled":
       return styles.canceled;
     default:
       return "";
@@ -107,6 +45,22 @@ const Orders = () => {
     }
     fetchOrders();
   }, [])
+  function changeStatus (status){
+    let new_status = "Tất cả"
+    if(status === "Processing"){
+      new_status = "Chờ xác nhận"
+    }
+    else if(status === "Shipping"){
+      new_status = "Vận chuyển"
+    }
+    else if(status === "Delivered"){
+      new_status = "Hoàn thành"
+    }
+    else if(status === "Cancelled"){
+      new_status = "Đã hủy"
+    }
+    return new_status
+  }
 
   if(isLoading){
     return (
@@ -131,18 +85,18 @@ const Orders = () => {
                     className={filter === status ? `${styles.tabOrder} ${styles.tabOrderActive}` : styles.tabOrder}
                     onClick={() => setFilter(status)}
                 >
-                    {status}
+                    {changeStatus(status)}
                 </button>
                 ))}
             </div>
             <div className={styles.orderList}>
-                {filteredOrders.map((order) => (
+{filteredOrders.map((order) => (
                 <div key={order.order_id} className={styles.orderItem}>
                     <div className={styles.titleOrder}>
                     <h6>
                         Mã đơn hàng: <strong>{order.order_id}</strong>
                     </h6>
-                    <span className={getStatusClass(order.status)}>{getStatusBadge( order.status)}</span>
+                    <span className={getStatusClass(order.status)}>{getStatusBadgeClient( order.status)}</span>
                     </div>
                     <hr />
                     <div className={styles.orderInfo}>

@@ -1,4 +1,3 @@
-
 import styles from './AccountInfo.module.css';
 import { useEffect, useState } from 'react';
 import NavBar from '../../components/Navbar/Navbar';
@@ -39,7 +38,7 @@ const AccountInfo = () => {
   return (
     <div>
       <NavBar />
-        <div className='d-flex justify-content-center align-items-center p-5 'style={{height: "100%"}}>
+        <div className='d-flex justify-content-center align-items-center p-5 'style={{height: "100%", backgroundColor: "#f0f0f0"}}>
             <div className={styles.sidebarone}>
             </div>
             <div className={styles.maincolumn}>
@@ -75,8 +74,8 @@ const AccountInfo = () => {
                         </div> */}
                         <div className={styles.formGroup}>
                         <label>Ngày sinh</label>
-                        <input 
-                            type="date"
+                        <input
+type="date"
                             name='birthday'
                             value={userData.birthday}
                             onChange={(e) => setUserData({ ...userData, birthday: e.target.value })} 
