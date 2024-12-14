@@ -43,9 +43,9 @@ function Dashboard() {
       const response4 = await fetchTotalOrderShipping(startDate, endDate);
       setTotalOrderShipping(response4);
       const response5 = await fetchRevenueByCategory(startDate, endDate);
-      setRevenueByCategory(response5);
+      setRevenueByCategory(response5 || []);
       const response6 = await fetchRevenueByBrand(startDate, endDate);
-      setRevenueByBrand(response6);
+      setRevenueByBrand(response6 || []);
       const response7 = await fetchTopProducts(startDate, endDate);
       setTopProducts(response7);
     } catch (error) {

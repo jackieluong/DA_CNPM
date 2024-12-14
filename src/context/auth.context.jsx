@@ -12,31 +12,42 @@ export const AuthContext = createContext({
 });
 
 export const AuthWrapper = ({ children }) => {
-    
-  const [auth, setAuth] = useState({
-    isAuthenticated: false,
-    user: {
-      id: "",
-      email: "",
-      role: '',
-    },
-  });
+  
+  const initialAuthState = () =>{
+    const accessToken = localStorage.getItem("accessToken");
+    const user = localStorage.getItem("user");
+    if(accessToken && user ){
+      return{
+        isAuthenticated: true,
+        user: JSON.parse(user),
+      }
+
+    }else{
+      return{
+        isAuthenticated: false,
+        user: {
+          id: "",
+          email: "",
+          role: '',
+        },
+      }
+    }
+  }
+  const [auth, setAuth] = useState(initialAuthState);
 
   // const [appLoading, setAppLoading] = useState(false);
-
+  
   const login = async (email, password) => {
     try {
       const response = await handleLogin(email, password);
 
       localStorage.setItem("accessToken", response.accessToken);
 
+      localStorage.setItem("user", JSON.stringify(response.user));
+      console.log(response);
       setAuth({
         isAuthenticated: true,
-        user: {
-          id: response.user.id,
-          email: response.user.email,
-          role: response.user.role
-        },
+        user: response.user
       });
 
       alert(response.message);
@@ -45,11 +56,13 @@ export const AuthWrapper = ({ children }) => {
       alert(error.response.data.message);
       console.log(error);
     }
+    
   };
 
   const logout = async () => {
     try {
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
         setAuth({
             isAuthenticated: false,
             user: {
