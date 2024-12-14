@@ -3,7 +3,7 @@ import { Form, useNavigate } from "react-router-dom";
 import iconGoogle from "../../assets/google.png";
 import iconLogin from "../../assets/Login.png";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { handleLogin } from "../../services/userService";
 import { AuthContext, useAuth } from "../../context/auth.context";
 
@@ -16,22 +16,33 @@ function Login() {
 
   const navigate = useNavigate();
 
+  
   const handleSumit = async (e) => {
     e.preventDefault();
     console.log("email: ", email, "password: ", password);
     try {
       await login(email, password);
-      if(auth.user.role === 'customer'){
-        navigate("/");
-      }else if(auth.user.role === 'manager'){
-        navigate("/admin");
-      }
+      
+      // if(auth.user.role === 'customer'){
+      //   navigate("/");
+      // }else if(auth.user.role === 'manager'){
+      //   navigate("/admin");
+      // }
       
     } catch (error) {
       console.log(error);
       // alert(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    if(auth.isAuthenticated && auth.user.role === 'customer'){
+      navigate("/");
+    }else if(auth.isAuthenticated && auth.user.role === 'manager'){
+      navigate("/admin");
+    }
+
+  }, [auth, navigate])
   return (
     <div className={styles.loginPage}>
       <div className={styles.leftSection}>
